@@ -1,0 +1,16 @@
+{
+  "provider": "skymerse",
+  "sources": [
+    "skymerse-notams-api-openapi.yml"
+  ],
+  "outputs": [
+    "skymerse-notams-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "skymerse-notams-api-openapi.yml: dangling $ref: #/components/schemas/AffectedElementFilter"
+  ],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

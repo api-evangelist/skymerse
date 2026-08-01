@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/skymerse-notamify-openapi-original.json
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: Provider publishes an OpenAPI 3.1.1 document at /api/v2/openapi.json.
+- id: oauth2
+  conforms: false
+  evidence: Auth is http bearer (API key), no oauth2 securityScheme.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use application/json, not application/problem+json.
+- id: rfc8594-sunset-header
+  conforms: false
+- id: webhook-signing
+  conforms: true
+  evidence: Watcher webhooks are signed with HMAC-SHA256 via X-Notamify-Signature.
+- id: pagination
+  conforms: true
+  evidence: Page-number pagination with page/per_page/total_count.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key contract documented.
+- id: tls-only
+  conforms: true
+  evidence: All endpoints served exclusively over TLS.

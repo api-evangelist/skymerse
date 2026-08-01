@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api/api-changelog
+scheme: dated
+current_version: 0.0.11
+entries:
+- date: '2026-06-10'
+  type: addition
+  highlight: Watcher API pauses deliveries after 25 consecutive failures.
+- date: '2026-05-07'
+  type: addition
+  highlight: Watcher API now supports up to 3 emails per listener.
+- date: '2026-05-04'
+  type: addition
+  highlight: Notamify API and Watcher API now provide Affected Elements V2.
+- date: '2026-03-06'
+  type: addition
+  highlight: Lifecycle messages for Watcher NOTAMs added; Watcher API accepts QCode patterns.
+- date: '2026-02-25'
+  type: addition
+  highlight: Sandbox environment introduced for Watcher API; airport context added to webhook payload.
+- date: '2026-02-03'
+  type: addition
+  highlight: Launched NOTAMs Nearby endpoint.
+- date: '2026-01-19'
+  type: change
+  highlight: Value of one credit in Watcher API updated.
+- date: '2025-11-23'
+  type: breaking
+  highlight: Watcher service POST method now accepts only external URLs.

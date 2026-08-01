@@ -1,0 +1,38 @@
+# Notamify API
+
+## Notamify API v2
+
+- [Welcome](https://skymerse.gitbook.io/notamify-api/readme.md)
+- [Quick start](https://skymerse.gitbook.io/notamify-api/basics/quick-start.md): Welcome to the Notamify API Quick Start Guide. In this document, you’ll learn how to make your first API call, understand essential parameters, and interpret the responses. By the end, you should have
+- [Authentication guide](https://skymerse.gitbook.io/notamify-api/basics/authentication-guide.md)
+- [Notamify API Credits and Costs](https://skymerse.gitbook.io/notamify-api/basics/notamify-api-credits-and-costs.md): Notamify uses a credit-based system for API usage.
+- [Notam Time Filtering](https://skymerse.gitbook.io/notamify-api/basics/notam-time-filtering.md): Notamify implements a sophisticated time-based filtering system for NOTAMs. This document explains how the time filtering works.
+- [Notamify NOTAM Schedules & RRULE Parsing](https://skymerse.gitbook.io/notamify-api/basics/notam-time-filtering/notamify-notam-schedules-and-rrule-parsing.md): This article expands on how Notamify represents and parses NOTAM schedules and how you can use them for client-side time filtering. It includes fully working Python and JavaScript examples.
+- [Rate limits](https://skymerse.gitbook.io/notamify-api/basics/rate-limits.md)
+- [NOTAMs Active endpoint](https://skymerse.gitbook.io/notamify-api/active-notams-endpoint.md)
+- [NOTAMs Nearby endpoint](https://skymerse.gitbook.io/notamify-api/nearby-notams-endpoint.md)
+- [NOTAMs Raw endpoint](https://skymerse.gitbook.io/notamify-api/raw-notams-endpoint.md)
+- [NOTAMs Archive endpoint](https://skymerse.gitbook.io/notamify-api/historical-notams-endpoint.md)
+- [Simple Briefing endpoint](https://skymerse.gitbook.io/notamify-api/simple-briefing-endpoint.md)
+- [Async flight briefings endpoint](https://skymerse.gitbook.io/notamify-api/async-briefings.md)
+- [Briefings chips system](https://skymerse.gitbook.io/notamify-api/async-briefings/briefings-chips-system.md): The V2 Briefing API uses a chip system to create interactive, clickable elements in the briefing text.
+- [NOTAM Watcher API](https://skymerse.gitbook.io/notamify-api/notam-watcher/notam-watcher-api.md)
+- [Creating Listeners](https://skymerse.gitbook.io/notamify-api/notam-watcher/creating-listeners.md): Create Notamify Watcher listeners that deliver matching NOTAM interpretations to a webhook or email recipients.
+- [applies\_to Filters](https://skymerse.gitbook.io/notamify-api/notam-watcher/creating-listeners/applies-to-filters.md): Use applies\_to filters to receive NOTAMs that matter to specific aircraft, traffic, operation, or phase scopes.
+- [Aircraft Applicability Filters](https://skymerse.gitbook.io/notamify-api/notam-watcher/creating-listeners/aircraft-applicability-filters.md): Use aircraft applicability filters to receive NOTAMs relevant to aircraft classes, aircraft designators, or aircraft catalog families.
+- [Watcher Time Window Filters](https://skymerse.gitbook.io/notamify-api/notam-watcher/creating-listeners/watcher-time-window-filters.md): Use Watcher time window filters to receive only NOTAMs that apply during the dates, days, or UTC hours you care about.
+- [Watcher API Webhook messages](https://skymerse.gitbook.io/notamify-api/notam-watcher/watcher-api-webhook-messages.md)
+- [Watcher NOTAM Lifecycle](https://skymerse.gitbook.io/notamify-api/notam-watcher/watcher-notam-lifecycle.md): This document explains what the Watcher API delivers to listeners and how filters.notam\_type differs from lifecycle\_enabled.
+- [Webhook Security](https://skymerse.gitbook.io/notamify-api/notam-watcher/webhook-security.md): This guide explains how webhook signing works, how to verify requests, and how to manage secrets.
+- [Notamify Python SDK](https://skymerse.gitbook.io/notamify-api/sdk/python.md): The Notamify Python SDK is an open-source library that streamlines NOTAM data fetching, listener management, and real-time webhook handling for the Notamify API v2 and Watcher API.
+- [API Changelog](https://skymerse.gitbook.io/notamify-api/api-changelog.md)
+
+## Notamify API v1
+
+- [Welcome](https://skymerse.gitbook.io/notamify-api/v1/readme.md)
+- [Quick start](https://skymerse.gitbook.io/notamify-api/v1/basics/quick-start.md): Welcome to the Notamify API Quick Start Guide. In this document, you’ll learn how to make your first API call, understand essential parameters, and interpret the responses. By the end, you should have
+- [Authentication guide](https://skymerse.gitbook.io/notamify-api/v1/basics/authentication-guide.md)
+- [Notamify API Credits](https://skymerse.gitbook.io/notamify-api/v1/basics/notamify-api-credits.md)
+- [NOTAM and Briefing endpoints](https://skymerse.gitbook.io/notamify-api/v1/notam-and-briefing-endpoints.md): The following document is endpoint details guide about real-time get-notam and get-briefing endpoints.
+- [Code Samples for the Notamify API](https://skymerse.gitbook.io/notamify-api/v1/notam-and-briefing-endpoints/code-samples-for-the-notamify-api.md)
+- [Migration Guide to V2](https://skymerse.gitbook.io/notamify-api/v1/migration-guide-to-v2.md): This document outlines the differences between the legacy /api/get-notams endpoint and the new /api/v2/notams endpoint, helping you migrate to the improved v2 API.

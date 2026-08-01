@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api
+versioning:
+  scheme: uri-path
+  current: v2
+  legacy: v1
+  docs: https://skymerse.gitbook.io/notamify-api/v1/readme
+  migration_guide: https://skymerse.gitbook.io/notamify-api
+  note: >-
+    V2 is the current API; V1 remains documented as legacy with a migration
+    guide to V2. No formal dated sunset for V1 is published.
+changelog: https://skymerse.gitbook.io/notamify-api/api-changelog
+status_page: null
+sla: null
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No RFC 8594 Sunset/Deprecation header policy documented.
+deprecated_operations: []

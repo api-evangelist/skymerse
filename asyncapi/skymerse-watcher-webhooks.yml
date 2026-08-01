@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api/notam-watcher/notam-watcher-api
+spec_type: Webhooks
+surface: NOTAM Watcher API
+transport: HTTP POST to a subscriber-provided webhook_url (external URLs only)
+docs:
+  overview: https://skymerse.gitbook.io/notamify-api/notam-watcher/notam-watcher-api
+  creating_listeners: https://skymerse.gitbook.io/notamify-api/notam-watcher/creating-listeners
+  messages: https://skymerse.gitbook.io/notamify-api/notam-watcher/watcher-api-webhook-messages
+  security: https://skymerse.gitbook.io/notamify-api/notam-watcher/webhook-security
+  lifecycle: https://skymerse.gitbook.io/notamify-api/notam-watcher/watcher-notam-lifecycle
+delivery:
+  method: POST
+  content_type: application/json
+  retry: Deliveries are paused after 25 consecutive failures.
+  recipients: webhook and/or up to 3 email addresses per listener.
+signing:
+  header: X-Notamify-Signature
+  algorithm: HMAC-SHA256
+  signed_payload: '"<timestamp>.<raw_body>"'
+  header_format: 't=<timestamp>,v1=<hex_signature>[,v1=<prev_signature>]'
+  timestamp_tolerance: 10 minutes recommended
+  rotation: Two signatures provided during a 3-hour secret-rotation grace period.
+  sdk_helper: notamify-sdk verify_signature()
+events:
+- kind: interpretation
+  description: Standard interpreted NOTAM delivery matching a listener's filters.
+- kind: lifecycle
+  description: >-
+    Additional delivery when a previously delivered NOTAM is later cancelled
+    (NOTAMC) or replaced (NOTAMR).
+payload_fields:
+- listener_id
+- kind
+- event_id
+- notam
+- change
+- context
+- sent_at
+filters:
+  applies_to: aircraft / traffic / operation / phase scopes
+  aircraft_applicability: class, designator, or catalog family
+  time_window: dates, days, or UTC hours
+  qcode_patterns: supported
+sandbox: Watcher API provides a sandbox environment for testing deliveries.

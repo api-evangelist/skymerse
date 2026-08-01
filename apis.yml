@@ -1,22 +1,125 @@
 aid: skymerse
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/skymerse.png
 name: Skymerse
-description: Skymerse is a company surfaced as a portfolio company of y-combinator and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Skymerse is a Y Combinator-backed aviation company building one AI system for
+  airline flight operations — from planning and monitoring in the operations
+  center to real-time support in the cockpit. Its first product, Notamify,
+  interprets NOTAMs (Notices to Airmen) with specialized aeronautical models and
+  ships the Notamify API V2: a REST API over global NOTAM data with AI-enhanced
+  interpretation, active/nearby/raw/archive NOTAM endpoints, AI NOTAM
+  prioritisation, synchronous and asynchronous flight briefings, and a Watcher
+  API that pushes matching interpreted NOTAMs to signed webhooks. Notamify
+  already serves airline customers and thousands of pilots and aviation
+  professionals, with an official Python SDK and an MCP server for agents.
 url: https://raw.githubusercontent.com/api-evangelist/skymerse/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - y-combinator
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-stub
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Aviation
+- NOTAM
+- Flight Operations
+- Aeronautical
+- Weather
+- AI
+- Webhooks
+apis:
+- aid: skymerse:skymerse-notams-api
+  name: Skymerse Notams API
+  description: The Notams API from Skymerse — 9 operation(s) for notams.
+  humanURL: https://skymerse.gitbook.io/notamify-api
+  baseURL: https://api.notamify.com/api/v2
+  tags:
+  - Notams
+  properties:
+  - type: OpenAPI
+    url: openapi/skymerse-notams-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/skymerse-watcher-webhooks.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/skymerse-domain-security.yml
+- type: Authentication
+  url: authentication/skymerse-authentication.yml
+- type: Packages
+  url: packages/skymerse-packages.yml
+- type: SDKs
+  url: packages/skymerse-packages.yml
+- type: MCPServer
+  url: mcp/skymerse-mcp.yml
+- type: LLMsTxt
+  url: llms/skymerse-llms.txt
+- type: WellKnown
+  url: well-known/skymerse-well-known.yml
+- type: Conventions
+  url: conventions/skymerse-conventions.yml
+- type: ErrorCatalog
+  url: errors/skymerse-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/skymerse-lifecycle.yml
+- type: ChangeLog
+  url: changelog/skymerse-changelog.yml
+- type: RateLimits
+  url: rate-limits/skymerse-rate-limits.yml
+- type: Conformance
+  url: conformance/skymerse-conformance.yml
+- type: Webhooks
+  url: asyncapi/skymerse-watcher-webhooks.yml
+- type: Sandbox
+  url: sandbox/skymerse-sandbox.yml
+- type: DataModel
+  url: data-model/skymerse-data-model.yml
+- type: Overlay
+  url: overlays/skymerse-notamify-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DeveloperPortal
+  url: https://skymerse.gitbook.io/notamify-api
+- type: Documentation
+  url: https://skymerse.gitbook.io/notamify-api
+- type: APIReference
+  url: https://skymerse.gitbook.io/notamify-api/active-notams-endpoint
+- type: GettingStarted
+  url: https://skymerse.gitbook.io/notamify-api/basics/quick-start
+- type: Blog
+  url: https://notamify.com/blog
+- type: GitHubOrganization
+  url: https://github.com/skymerse
+- type: PrivacyPolicy
+  url: https://www.skymerse.com/privacy
+- type: Pricing
+  url: https://skymerse.gitbook.io/notamify-api/basics/notamify-api-credits-and-costs
+- type: SignUp
+  url: https://notamify.com/api-manager
+- type: Support
+  url: https://www.skymerse.com/contact
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1

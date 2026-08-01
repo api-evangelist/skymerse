@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+host: https://api.notamify.com
+note: >-
+  Probed the well-known discovery surface on the API host and website. No
+  well-known documents were served (security.txt returns 403 behind the WAF; no
+  OIDC/oauth-authorization-server/api-catalog/ai-plugin documents). Absence is
+  valid recorded data.
+documents:
+- path: /.well-known/security.txt
+  host: https://api.notamify.com
+  status: 403
+- path: /.well-known/security.txt
+  host: https://notamify.com
+  status: 403
+- path: /.well-known/openid-configuration
+  host: https://api.notamify.com
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: https://api.notamify.com
+  status: 404
+- path: /.well-known/api-catalog
+  host: https://api.notamify.com
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: https://api.notamify.com
+  status: 404

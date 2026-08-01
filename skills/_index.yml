@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: skymerse-get-airport-notams.md
+  name: Get active NOTAMs for airports
+  api: openapi/skymerse-notamify-openapi-original.json
+  operations: ['GET /notams', 'GET /notams/nearby', 'GET /notams/raw']
+- file: skymerse-generate-flight-briefing.md
+  name: Generate an AI flight briefing
+  api: openapi/skymerse-notamify-openapi-original.json
+  operations: ['POST /notams/briefing', 'GET /notams/briefing/{uuid}', 'GET /notams/briefing/simple']
+- file: skymerse-watcher-webhooks.md
+  name: Subscribe to NOTAM changes via the Watcher API
+  api: openapi/skymerse-notamify-openapi-original.json
+  operations: ['GET /notams']

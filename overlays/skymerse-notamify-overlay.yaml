@@ -1,0 +1,48 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Notamify API V2
+  version: 1.0.0
+extends: openapi/skymerse-notamify-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 4
+    x-apievangelist-notes: >-
+      Rich OpenAPI 3.1.1 with 9 operations across active/nearby/raw/archive
+      NOTAMs, AI prioritisation, and sync/async flight briefings. Gaps: no
+      operationIds, no operation summaries on most paths, and no operation-level
+      tags — the biggest contract-quality improvements a follow-up should file.
+- target: $.info
+  update:
+    x-agent-readiness:
+      auth: bearer (API key)
+      webhooks: Watcher API (HMAC-SHA256 signed)
+      mcp: https://github.com/skymerse/notamify-mcp
+      sdk: notamify-sdk (PyPI, official)
+- target: $.paths['/notams'].get
+  update:
+    x-recommended-operationId: getActiveNotams
+- target: $.paths['/notams/archive'].get
+  update:
+    x-recommended-operationId: getArchiveNotams
+- target: $.paths['/notams/nearby'].get
+  update:
+    x-recommended-operationId: getNearbyNotams
+- target: $.paths['/notams/raw'].get
+  update:
+    x-recommended-operationId: getRawNotams
+- target: $.paths['/notams/recently-expired'].get
+  update:
+    x-recommended-operationId: getRecentlyExpiredNotams
+- target: $.paths['/notams/prioritisation'].post
+  update:
+    x-recommended-operationId: prioritiseNotams
+- target: $.paths['/notams/briefing'].post
+  update:
+    x-recommended-operationId: generateFlightBriefing
+- target: $.paths['/notams/briefing/simple'].get
+  update:
+    x-recommended-operationId: generateSimpleAirportBriefing
+- target: $.paths['/notams/briefing/{uuid}'].get
+  update:
+    x-recommended-operationId: getBriefingJobStatus

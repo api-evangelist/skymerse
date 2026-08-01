@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/skymerse-notamify-openapi-original.json
+entities:
+- name: Notam
+  schema: NotamDTO
+  key: id
+  fields: [id, notam_number, location, icao_code, classification, starts_at, ends_at,
+    issued_at, is_estimated, is_permanent, message, icao_message, qcode, interpretation]
+  relationships:
+  - has_one: NotamInterpretation
+    via: interpretation
+- name: NotamListResult
+  schema: NotamListResult
+  fields: [notams, total_count, page, per_page]
+  relationships:
+  - has_many: Notam
+    via: notams
+- name: NotamInterpretation
+  schema: NotamInterpretationDTO
+  fields: [description, excerpt, category, subcategory, map_elements, affected_elements,
+    schedules, schedule_description]
+  relationships:
+  - has_many: AffectedElement
+    via: affected_elements
+  - has_many: NotamMapElement
+    via: map_elements
+  - has_many: NotamScheduleInterpretation
+    via: schedules
+- name: AffectedElement
+  schema: AffectedElementDTO
+  fields: [type, identifier, effect, details, subtype, semantics]
+  relationships:
+  - has_one: AffectedElementSemantics
+    via: semantics
+- name: Briefing
+  schema: BriefingResponse
+  fields: [critical_operational_restrictions, text]
+  relationships:
+  - has_many: CriticalOperationalRestrictionGroup
+    via: critical_operational_restrictions
+- name: BriefingJob
+  schema: BriefingJobStatusDTO
+  key: uuid
+  fields: [uuid, status, created_at, updated_at, response]
+  relationships:
+  - has_one: GenerateFlightBriefingResponse
+    via: response
+- name: NotamPrioritisationResult
+  schema: NotamPrioritisationResult
+  fields: [notams, total_count, page, per_page]
+  relationships:
+  - has_many: PrioritizedNotam
+    via: notams

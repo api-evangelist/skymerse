@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/skymerse-notamify-openapi-original.json
+format: json
+envelope: application/json
+note: >-
+  Notamify V2 returns JSON error bodies (not RFC 9457 application/problem+json).
+  Problems below are derived from the OpenAPI 4xx/5xx responses.
+problems:
+- status: 400
+  title: Invalid request body
+  source_operation: 'openapi/skymerse-notamify-openapi-original.json#POST /notams/briefing'
+- status: 404
+  title: Archive snapshot not found for the requested search
+  remediation: Credits are not deducted when an archive snapshot is not found.
+  source_operation: 'openapi/skymerse-notamify-openapi-original.json#GET /notams/archive'
+- status: 404
+  title: No NOTAMs available for the given parameters
+  source_operation: 'openapi/skymerse-notamify-openapi-original.json#GET /notams/briefing/simple'
+- status: 404
+  title: Briefing job not found
+  source_operation: 'openapi/skymerse-notamify-openapi-original.json#GET /notams/briefing/{uuid}'
+- status: 500
+  title: Briefing job failed
+  source_operation: 'openapi/skymerse-notamify-openapi-original.json#GET /notams/briefing/{uuid}'

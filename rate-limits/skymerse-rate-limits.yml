@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api/basics/rate-limits
+model: fixed-window per-minute + credit-based metering
+limits:
+- scope: /api/v2/notams/archive
+  limit_count: 10
+  window: minute
+  note: 10 requests/minute for all archive endpoint calls.
+- scope: all-other-endpoints
+  limit_count: 20
+  window: minute
+  note: 20 requests/minute for all other requests.
+credits:
+  model: credit-based
+  docs: https://skymerse.gitbook.io/notamify-api/basics/notamify-api-credits-and-costs
+  note: >-
+    In addition to per-minute rate limits, API usage is metered by a credit
+    system; endpoints deduct credits per successful request.

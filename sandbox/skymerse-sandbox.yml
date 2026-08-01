@@ -1,0 +1,13 @@
+generated: '2026-07-21'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api/notam-watcher
+note: >-
+  Skymerse/Notamify publishes a sandbox environment for the Watcher API
+  (introduced 2026-02-25) for testing webhook listener deliveries without
+  affecting production. The core V2 NOTAM read endpoints operate against live
+  global NOTAM data metered by the credit system; no separate test-vs-live key
+  prefix scheme is documented. No fabricated test values are recorded here.
+watcher_sandbox:
+  available: true
+  purpose: Test Watcher listener creation and webhook delivery.
+  docs: https://skymerse.gitbook.io/notamify-api/notam-watcher/notam-watcher-api

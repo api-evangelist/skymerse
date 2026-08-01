@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/skymerse-notamify-openapi-original.json
+docs: https://skymerse.gitbook.io/notamify-api/basics/authentication-guide
+summary:
+  types:
+  - http
+  api_key_in:
+  - header
+  oauth2_flows: []
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  format: 'Authorization: Bearer YOUR_API_KEY'
+  key_management: https://notamify.com/api-manager
+  notes: >-
+    Notamify API keys are passed as bearer tokens in the Authorization header.
+    Generate and rotate keys in the API Manager. All endpoints are served
+    exclusively over TLS; plain-HTTP requests are rejected. The Python SDK can
+    read the token from the NOTAMIFY_TOKEN environment variable or
+    ~/.config/notamify/config.json. No OAuth scopes are documented — access is a
+    single API-key credential metered by a credit-based usage model.
+  sources:
+  - openapi/skymerse-notamify-openapi-original.json

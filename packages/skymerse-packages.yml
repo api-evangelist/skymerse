@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: https://pypi.org/project/notamify-sdk/
+packages:
+- language: python
+  registry: pypi
+  name: notamify-sdk
+  version: 0.3.0
+  url: https://pypi.org/project/notamify-sdk/
+  repository: https://github.com/skymerse/notamify-sdk-python
+  install: pip install notamify-sdk
+  requires_python: '>=3.10'
+  official: true
+  description: >-
+    Official Python SDK for the Notamify API v2 and Watcher API. Provides typed
+    models, lazy pagination, async briefing helpers, Watcher listener
+    management, and webhook signature verification (verify_signature).
+  docs: https://skymerse.gitbook.io/notamify-api/sdk/python

@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api
+authentication:
+  style: bearer-token
+  header: Authorization
+  ref: authentication/skymerse-authentication.yml
+pagination:
+  style: page-number
+  params:
+  - page
+  - per_page
+  response_fields:
+  - page
+  - per_page
+  - total_count
+  note: List endpoints return page, per_page and total_count alongside the results array.
+idempotency:
+  supported: false
+  note: No idempotency-key contract is documented; primary data endpoints are GET (naturally idempotent).
+versioning:
+  scheme: uri-path
+  current: v2
+  legacy: v1
+  base_url: https://api.notamify.com/api/v2
+time_filtering:
+  params:
+  - starts_at
+  - ends_at
+  format: ISO 8601
+  docs: https://skymerse.gitbook.io/notamify-api/basics/notam-time-filtering
+  schedules: >-
+    NOTAM schedules are represented in RRULE format for client-side time
+    filtering (Python and JavaScript examples in the docs).
+rate_limiting:
+  ref: rate-limits/skymerse-rate-limits.yml
+  model: per-minute fixed window + credit-based metering
+error_envelope:
+  format: application/json
+  ref: errors/skymerse-problem-types.yml
+webhooks:
+  surface: Watcher API
+  signing: HMAC-SHA256 via X-Notamify-Signature header
+  ref: asyncapi/skymerse-watcher-webhooks.yml
+transport:
+  tls_only: true
+  note: All endpoints served exclusively over TLS; plain-HTTP requests are rejected.

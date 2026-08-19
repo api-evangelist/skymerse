@@ -1,0 +1,1960 @@
+{
+  "item": [
+    {
+      "id": "34fa3a52-b9df-4669-a27c-3cfac2a7cf3b",
+      "name": "Notams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9cee630-3aec-4e9a-a27e-e3415a421515",
+          "name": "Get recently expired NOTAMs",
+          "request": {
+            "name": "Get recently expired NOTAMs",
+            "description": {
+              "content": "Returns inactive NOTAMs for the requested locations whose expired_at timestamp falls within the requested recent window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notams",
+                "recently-expired"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expired_after",
+                  "value": "<dateTime>",
+                  "description": "Lower bound for when the NOTAM was marked inactive. Defaults to 24 hours before current UTC time."
+                },
+                {
+                  "disabled": false,
+                  "key": "expired_before",
+                  "value": "<dateTime>",
+                  "description": "Upper bound for when the NOTAM was marked inactive. Defaults to current UTC time."
+                },
+                {
+                  "disabled": false,
+                  "key": "excluded_classifications",
+                  "value": "<string>",
+                  "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Number of NOTAMs per page. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb159226-2d76-4d7b-8d57-3c52b3e2a812",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "recently-expired"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expired_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expired_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "excluded_classifications",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notams\": [],\n  \"total_count\": 0,\n  \"page\": 1,\n  \"per_page\": 30\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8317280-2fa1-4345-8981-61aef0b2a65f",
+          "name": "/notams/archive",
+          "request": {
+            "name": "/notams/archive",
+            "description": {},
+            "url": {
+              "path": [
+                "notams",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "valid_at",
+                  "value": "<date>",
+                  "description": "(Required) Date to check NOTAM validity (YYYY-MM-DD). Cannot be in the future."
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "always_include_est",
+                  "value": "<boolean>",
+                  "description": "Whether to always include EST times in the window, even if the notam already expired."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Number of NOTAMs per page. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, ROUTE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, ROUTE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46e1ceb5-8c6c-482c-b1ae-bc08482e15a1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valid_at",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "always_include_est",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notams\": [\n    {\n      \"ends_at\": \"2025-03-21T15:30:00Z\",\n      \"icao_code\": \"LIMA\",\n      \"icao_message\": \"C0184/25 NOTAMN\\nQ) LIMM/QFAXX/IV/NBO/A /000/999/4505N00736E005\\nA) LIMA B) 2503181200 C) 2503211530\\nD) 18 1200-1530, 19-21 0800-1100 1200-1530\\nE) TESTO ITALIANO:\\nTUTTO IL TRAFFICO E&apos; SOGGETTO A RITARDI A CAUSAALL&apos; ATTIVITA&apos; DI\\nLANCI PARACADUTISTICI MILITARI ANNUNCIATA DAL NOTAM W0738/25.\\nTRAFFICO SERVIZIO MEDICO DI EMERGENZA CON ELICOTTERI (HEMS)\\nNON INTERESSATO.\\nRMK: TRAFFICO CONSENTITO PREVIO COORDINAMENTO CON LOCALE SERVIZIO\\nAERONAUTICAL FLIGHT INFO UNIT (AFIU) LOCALE.\\nENGLISH TEXT:\\nALL TRAFFIC SUBJ DLA DUE TO MIL PJE ANNOUNCED BY NOTAM W0738/25.\\nHELICOPTER EMERG MEDICAL SER (HEMS) NOT AFFECTED.\\nRMK: TRAFFIC ALLOWED PRIOR COOR WITH LOCAL AERONAUTICAL FLIGHT INFO\\nUNIT (AFIU).\\nREF AIP AD 2 LIMA 1-1\",\n      \"qcode\": \"QFAXX\",\n      \"id\": \"263dbe90-b168-412f-aa9a-0555fa9cd736\",\n      \"interpretation\": {\n        \"affected_elements\": [\n          {\n            \"details\": \"Announced parachuting operations are causing delays to traffic.\",\n            \"effect\": \"RESTRICTED\",\n            \"identifier\": \"Notam W0738/25 parachuting area\",\n            \"type\": \"AIRSPACE\"\n          },\n          {\n            \"details\": \"All traffic subject to service delays due to parachuting military operations.\",\n            \"effect\": \"RESTRICTED\",\n            \"identifier\": \"AIR TRAFFIC CONTROL\",\n            \"type\": \"SERVICE\"\n          }\n        ],\n        \"category\": \"OTHER\",\n        \"description\": \"All traffic is subject to delays due to military parachute drop activities announced in NOTAM W0738/25. Emergency medical service traffic is still operational during scheduled times.\",\n        \"excerpt\": \"Traffic delays due to military parachute activities.\",\n        \"schedules\": [\n          {\n            \"description\": \"On March 18 from 12:00 to 15:30.\",\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250318T120000Z\\nRRULE:FREQ=DAILY;UNTIL=20250318T153000Z;BYHOUR=12;BYMINUTE=0;BYSECOND=0\",\n            \"source\": \"18 1200-1530\"\n          },\n          {\n            \"description\": \"On March 19 to 21 from 08:00 to 11:00 and 12:00 to 15:30.\",\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250319T080000Z\\nRRULE:FREQ=DAILY;COUNT=3;BYHOUR=8;BYMINUTE=0;BYSECOND=0\",\n            \"source\": \"19-21 0800-1100 1200-1530\"\n          },\n          {\n            \"description\": \"On March 19 to 21 from 12:00 to 15:30.\",\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250319T120000Z\\nRRULE:FREQ=DAILY;COUNT=3;BYHOUR=12;BYMINUTE=0;BYSECOND=0\",\n            \"source\": \"19-21 0800-1100 1200-1530\"\n          }\n        ],\n        \"subcategory\": \"OTHER\"\n      },\n      \"is_estimated\": false,\n      \"is_permanent\": false,\n      \"issued_at\": \"2025-03-17T12:06:00Z\",\n      \"location\": \"LIMA\",\n      \"message\": \"TESTO ITALIANO:\\nTUTTO IL TRAFFICO E' SOGGETTO A RITARDI A CAUSAALL' ATTIVITA' DI\\nLANCI PARACADUTISTICI MILITARI ANNUNCIATA DAL NOTAM W0738/25.\\nTRAFFICO SERVIZIO MEDICO DI EMERGENZA CON ...\",\n      \"notam_number\": \"C0184/25\",\n      \"starts_at\": \"2025-03-18T12:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95aec1e3-b903-4280-8e1d-c0f6d6e0a362",
+              "name": "Archive snapshot not found for the requested search. Credits were not deducted for this request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valid_at",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "always_include_est",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Archive snapshot not found for the requested search. Credits were not deducted for this request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd812b08-440f-480d-bb88-18f4e1d36bb9",
+          "name": "/notams",
+          "request": {
+            "name": "/notams",
+            "description": {},
+            "url": {
+              "path": [
+                "notams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "excluded_classifications",
+                  "value": "<string>",
+                  "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "starts_at",
+                  "value": "<dateTime>",
+                  "description": "Start date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to current UTC time."
+                },
+                {
+                  "disabled": false,
+                  "key": "ends_at",
+                  "value": "<dateTime>",
+                  "description": "End date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to 365 days from starts_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "always_include_est",
+                  "value": "<boolean>",
+                  "description": "Whether to always include EST times in the window, even if the notam already expired."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Number of NOTAMs per page. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations. Can be provided as location."
+                },
+                {
+                  "disabled": false,
+                  "key": "qcode",
+                  "value": "<string>",
+                  "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "qcode",
+                  "value": "<string>",
+                  "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a147b8c-8440-40ea-9ada-b868680a0a61",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "excluded_classifications",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ends_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "always_include_est",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notams\": [\n    {\n      \"ends_at\": \"2025-06-30T02:00:00Z\",\n      \"icao_code\": \"EPWA\",\n      \"icao_message\": \"A0681/25 NOTAMN\\nQ) EPWW/QWOLW/IV/M  /AW/000/010/5213N02059E001\\nA) EPWA B) 2504042000 C) 2506300400\\nD) APR 04-06 11-13 18-20 25-27 2000-0400, MAY 02-04 09-11 16-18 \\n23-25 30 2000-0400, MAY 31 2000-2359, JUN 01 0000-0400 2000-0400, \\nJUN 06-08 13-15 20-22 27-29 2000-0400\\nE) NAVIGATION WARNING.\\nLASER AND REFLECTOR AT PSN: 521329N 0205928E - WARSZAWA.\\nANGLE OF BEAM: 000-090 DEG.\\nRANGE: 200M. \\nCONTACT: +48 571 409 606.\\nF) GND G) 1000FT AMSL\",\n      \"qcode\": \"QWOLW\",\n      \"id\": \"7e1b2056-301d-4723-a7e8-d0994fb7d6b6\",\n      \"interpretation\": {\n        \"affected_elements\": [],\n        \"category\": \"NAVIGATION\",\n        \"description\": \"A navigation warning is issued for a laser and reflector located at position 521329N 0205928E in Warszawa. The laser beam angle is from 000 to 090 degrees with a range of 200 meters. The warning is in effect during specified dates and times in April and May 2025.\",\n        \"excerpt\": \"Navigation warning for a laser and reflector in Warszawa with specific operational times.\",\n        \"map_elements\": [\n          {\n            \"area_number\": null,\n            \"coordinates\": [\n              {\n                \"lat\": 52.224722,\n                \"lon\": 20.991111,\n                \"radius_nm\": 0.11,\n                \"raw_radius\": \"200M\",\n                \"raw_string\": \"521329N 0205928E\"\n              }\n            ],\n            \"description\": \"Laser and reflector at position with a range of 200 meters.\",\n            \"element_type\": \"circle\",\n            \"geojson\": {\n              \"geometry\": {\n                \"coordinates\": [\n                  [\n                    [\n                      20.991111,\n                      52.2265540978663\n                    ],\n                    [\n                      20.991404155310587,\n                      52.22654527581431\n                    ],\n                    [\n                      20.991694487375277,\n                      52.226518894619524\n                    ],\n                    [\n                      20.991979200137575,\n                      52.226475208347274\n                    ],\n                    [\n                      20.992255551657944,\n                      52.22641463772023\n                    ],\n                    [\n                      20.99252088052017,\n                      52.226337766066656\n                    ],\n                    [\n                      20.99277263146227,\n                      52.22624533370259\n                    ],\n                    [\n                      20.993008379985046,\n                      52.226138230802235\n                    ],\n                    [\n                      20.993225855701354,\n                      52.22601748882506\n                    ],\n                    [\n                      20.99342296420116,\n                      52.22588427058231\n                    ],\n                    [\n                      20.99359780722186,\n                      52.2257398590385\n                    ],\n                    [\n                      20.993748700929586,\n                      52.22558564495572\n                    ],\n                    [\n                      20.993874192135447,\n                      52.22542311349991\n                    ],\n                    [\n                      20.99397307229053,\n                      52.22525382993782\n                    ],\n                    [\n                      20.994044389124884,\n                      52.2250794245627\n                    ],\n                    [\n                      20.994087455818416,\n                      52.22490157699366\n                    ],\n                    [\n                      20.994101857615316,\n                      52.224722\n                    ],\n                    [\n                      20.994087455818416,\n                      52.22454242300634\n                    ],\n                    [\n                      20.994044389124884,\n                      52.2243645754373\n                    ],\n                    [\n                      20.99397307229053,\n                      52.22419017006218\n                    ],\n                    [\n                      20.993874192135447,\n                      52.22402088650009\n                    ],\n                    [\n                      20.993748700929586,\n                      52.22385835504428\n                    ],\n                    [\n                      20.99359780722186,\n                      52.2237041409615\n                    ],\n                    [\n                      20.99342296420116,\n                      52.22355972941769\n                    ],\n                    [\n                      20.993225855701354,\n                      52.22342651117494\n                    ],\n                    [\n                      20.993008379985046,\n                      52.223305769197765\n                    ],\n                    [\n                      20.99277263146227,\n                      52.22319866629741\n                    ],\n                    [\n                      20.99252088052017,\n                      52.22310623393334\n                    ],\n                    [\n                      20.992255551657944,\n                      52.22302936227977\n                    ],\n                    [\n                      20.991979200137575,\n                      52.222968791652725\n                    ],\n                    [\n                      20.991694487375277,\n                      52.222925105380476\n                    ],\n                    [\n                      20.991404155310587,\n                      52.22289872418569\n                    ],\n                    [\n                      20.991111,\n                      52.2228899021337\n                    ],\n                    [\n                      20.990817844689413,\n                      52.22289872418569\n                    ],\n                    [\n                      20.990527512624723,\n                      52.222925105380476\n                    ],\n                    [\n                      20.990242799862425,\n                      52.222968791652725\n                    ],\n                    [\n                      20.989966448342056,\n                      52.22302936227977\n                    ],\n                    [\n                      20.98970111947983,\n                      52.22310623393334\n                    ],\n                    [\n                      20.98944936853773,\n                      52.22319866629741\n                    ],\n                    [\n                      20.989213620014954,\n                      52.223305769197765\n                    ],\n                    [\n                      20.988996144298646,\n                      52.22342651117494\n                    ],\n                    [\n                      20.98879903579884,\n                      52.22355972941769\n                    ],\n                    [\n                      20.98862419277814,\n                      52.2237041409615\n                    ],\n                    [\n                      20.988473299070414,\n                      52.22385835504428\n                    ],\n                    [\n                      20.988347807864553,\n                      52.22402088650009\n                    ],\n                    [\n                      20.98824892770947,\n                      52.22419017006218\n                    ],\n                    [\n                      20.988177610875116,\n                      52.2243645754373\n                    ],\n                    [\n                      20.988134544181584,\n                      52.22454242300634\n                    ],\n                    [\n                      20.988120142384684,\n                      52.224722\n                    ],\n                    [\n                      20.988134544181584,\n                      52.22490157699366\n                    ],\n                    [\n                      20.988177610875116,\n                      52.2250794245627\n                    ],\n                    [\n                      20.98824892770947,\n                      52.22525382993782\n                    ],\n                    [\n                      20.988347807864553,\n                      52.22542311349991\n                    ],\n                    [\n                      20.988473299070414,\n                      52.22558564495572\n                    ],\n                    [\n                      20.98862419277814,\n                      52.2257398590385\n                    ],\n                    [\n                      20.98879903579884,\n                      52.22588427058231\n                    ],\n                    [\n                      20.988996144298646,\n                      52.22601748882506\n                    ],\n                    [\n                      20.989213620014954,\n                      52.226138230802235\n                    ],\n                    [\n                      20.98944936853773,\n                      52.22624533370259\n                    ],\n                    [\n                      20.98970111947983,\n                      52.226337766066656\n                    ],\n                    [\n                      20.989966448342056,\n                      52.22641463772023\n                    ],\n                    [\n                      20.990242799862425,\n                      52.226475208347274\n                    ],\n                    [\n                      20.990527512624723,\n                      52.226518894619524\n                    ],\n                    [\n                      20.990817844689413,\n                      52.22654527581431\n                    ],\n                    [\n                      20.991111,\n                      52.2265540978663\n                    ]\n                  ]\n                ],\n                \"type\": \"Polygon\"\n              },\n              \"properties\": {\n                \"element_type\": \"circle\",\n                \"radius_nm\": 0.11\n              },\n              \"type\": \"Feature\"\n            }\n          }\n        ],\n        \"schedule_description\": \"On April 4-6, 11-13, 18-20, 25-27; May 2-4, 9-11, 16-18, 23-25, 30; May 31; June 1; June 6-8, 13-15, 20-22, 27-29 from 20:00 to 04:00.\",\n        \"schedules\": [\n          {\n            \"description\": \"On April 4-6, 11-13, 18-20, 25-27 from 20:00 to 04:00.\",\n            \"duration_hrs\": 8,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250404T200000Z\\nRRULE:FREQ=DAILY;UNTIL=20250627T040000Z;BYDAY=TH,FR,SA,SU,MO,TU,WE;COUNT=15\",\n            \"source\": \"APR 04-06 11-13 18-20 25-27 2000-0400\"\n          },\n          {\n            \"description\": \"On May 2-4, 9-11, 16-18, 23-25, 30 from 20:00 to 04:00.\",\n            \"duration_hrs\": 8,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250502T200000Z\\nRRULE:FREQ=DAILY;UNTIL=20250530T040000Z;BYDAY=TH,FR,SA,SU,MO,TU,WE;COUNT=12\",\n            \"source\": \"MAY 02-04 09-11 16-18 23-25 30 2000-0400\"\n          },\n          {\n            \"description\": \"On May 31 from 20:00 to 23:59.\",\n            \"duration_hrs\": 4,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250531T200000Z\\nRRULE:FREQ=DAILY;COUNT=1\",\n            \"source\": \"MAY 31 2000-2359\"\n          },\n          {\n            \"description\": \"On June 1 from 00:00 to 04:00 and 20:00 to 04:00.\",\n            \"duration_hrs\": 4,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250601T000000Z\\nRRULE:FREQ=DAILY;COUNT=1\",\n            \"source\": \"JUN 01 0000-0400 2000-0400\"\n          },\n          {\n            \"description\": \"On June 6-8, 13-15, 20-22, 27-29 from 20:00 to 04:00.\",\n            \"duration_hrs\": 8,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250606T200000Z\\nRRULE:FREQ=DAILY;UNTIL=20250629T040000Z;BYDAY=TH,FR,SA,SU,MO,TU,WE;COUNT=12\",\n            \"source\": \"JUN 06-08 13-15 20-22 27-29 2000-0400\"\n          }\n        ],\n        \"subcategory\": \"NAVIGATION_AID_STATUS\"\n      },\n      \"is_estimated\": false,\n      \"is_permanent\": false,\n      \"issued_at\": \"2025-03-19T12:37:00Z\",\n      \"location\": \"EPWA\",\n      \"message\": \"NAVIGATION WARNING.\\nLASER AND REFLECTOR AT PSN: 521329N 0205928E - WARSZAWA.\\nANGLE OF BEAM: 000-090 DEG.\\nRANGE: 200M. \\nCONTACT: +48 571 409 606.\\nF) GND G) 1000FT AMSL\",\n      \"notam_number\": \"A0681/25\",\n      \"starts_at\": \"2025-04-04T18:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d33c40aa-3821-4b34-bac8-221610672693",
+          "name": "/notams/nearby",
+          "request": {
+            "name": "/notams/nearby",
+            "description": {},
+            "url": {
+              "path": [
+                "notams",
+                "nearby"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "(Required) Latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "(Required) Longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "radius_nm",
+                  "value": "1",
+                  "description": "Search radius in nautical miles. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Number of NOTAMs per page. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "excluded_classifications",
+                  "value": "<string>",
+                  "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+                },
+                {
+                  "disabled": false,
+                  "key": "qcode",
+                  "value": "<string>",
+                  "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "qcode",
+                  "value": "<string>",
+                  "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "starts_at",
+                  "value": "<dateTime>",
+                  "description": "Start date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to current UTC time."
+                },
+                {
+                  "disabled": false,
+                  "key": "ends_at",
+                  "value": "<dateTime>",
+                  "description": "End date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to 365 days from starts_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "always_include_est",
+                  "value": "<boolean>",
+                  "description": "Whether to always include EST times in the window, even if the notam already expired."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87c1f60c-ee8c-43ea-803f-8fe1c3a3beef",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "nearby"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radius_nm",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "excluded_classifications",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ends_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "always_include_est",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notams\": [\n    {\n      \"ends_at\": \"2025-06-30T02:00:00Z\",\n      \"icao_code\": \"EPWA\",\n      \"icao_message\": \"A0681/25 NOTAMN\\nQ) EPWW/QWOLW/IV/M  /AW/000/010/5213N02059E001\\nA) EPWA B) 2504042000 C) 2506300400\\nD) APR 04-06 11-13 18-20 25-27 2000-0400, MAY 02-04 09-11 16-18 \\n23-25 30 2000-0400, MAY 31 2000-2359, JUN 01 0000-0400 2000-0400, \\nJUN 06-08 13-15 20-22 27-29 2000-0400\\nE) NAVIGATION WARNING.\\nLASER AND REFLECTOR AT PSN: 521329N 0205928E - WARSZAWA.\\nANGLE OF BEAM: 000-090 DEG.\\nRANGE: 200M. \\nCONTACT: +48 571 409 606.\\nF) GND G) 1000FT AMSL\",\n      \"qcode\": \"QWOLW\",\n      \"id\": \"7e1b2056-301d-4723-a7e8-d0994fb7d6b6\",\n      \"interpretation\": {\n        \"affected_elements\": [],\n        \"category\": \"NAVIGATION\",\n        \"description\": \"A navigation warning is issued for a laser and reflector located at position 521329N 0205928E in Warszawa. The laser beam angle is from 000 to 090 degrees with a range of 200 meters. The warning is in effect during specified dates and times in April and May 2025.\",\n        \"excerpt\": \"Navigation warning for a laser and reflector in Warszawa with specific operational times.\",\n        \"map_elements\": [\n          {\n            \"area_number\": null,\n            \"coordinates\": [\n              {\n                \"lat\": 52.224722,\n                \"lon\": 20.991111,\n                \"radius_nm\": 0.11,\n                \"raw_radius\": \"200M\",\n                \"raw_string\": \"521329N 0205928E\"\n              }\n            ],\n            \"description\": \"Laser and reflector at position with a range of 200 meters.\",\n            \"element_type\": \"circle\",\n            \"geojson\": {\n              \"geometry\": {\n                \"coordinates\": [\n                  [\n                    [\n                      20.991111,\n                      52.2265540978663\n                    ],\n                    [\n                      20.991404155310587,\n                      52.22654527581431\n                    ],\n                    [\n                      20.991694487375277,\n                      52.226518894619524\n                    ],\n                    [\n                      20.991979200137575,\n                      52.226475208347274\n                    ],\n                    [\n                      20.992255551657944,\n                      52.22641463772023\n                    ],\n                    [\n                      20.99252088052017,\n                      52.226337766066656\n                    ],\n                    [\n                      20.99277263146227,\n                      52.22624533370259\n                    ],\n                    [\n                      20.993008379985046,\n                      52.226138230802235\n                    ],\n                    [\n                      20.993225855701354,\n                      52.22601748882506\n                    ],\n                    [\n                      20.99342296420116,\n                      52.22588427058231\n                    ],\n                    [\n                      20.99359780722186,\n                      52.2257398590385\n                    ],\n                    [\n                      20.993748700929586,\n                      52.22558564495572\n                    ],\n                    [\n                      20.993874192135447,\n                      52.22542311349991\n                    ],\n                    [\n                      20.99397307229053,\n                      52.22525382993782\n                    ],\n                    [\n                      20.994044389124884,\n                      52.2250794245627\n                    ],\n                    [\n                      20.994087455818416,\n                      52.22490157699366\n                    ],\n                    [\n                      20.994101857615316,\n                      52.224722\n                    ],\n                    [\n                      20.994087455818416,\n                      52.22454242300634\n                    ],\n                    [\n                      20.994044389124884,\n                      52.2243645754373\n                    ],\n                    [\n                      20.99397307229053,\n                      52.22419017006218\n                    ],\n                    [\n                      20.993874192135447,\n                      52.22402088650009\n                    ],\n                    [\n                      20.993748700929586,\n                      52.22385835504428\n                    ],\n                    [\n                      20.99359780722186,\n                      52.2237041409615\n                    ],\n                    [\n                      20.99342296420116,\n                      52.22355972941769\n                    ],\n                    [\n                      20.993225855701354,\n                      52.22342651117494\n                    ],\n                    [\n                      20.993008379985046,\n                      52.223305769197765\n                    ],\n                    [\n                      20.99277263146227,\n                      52.22319866629741\n                    ],\n                    [\n                      20.99252088052017,\n                      52.22310623393334\n                    ],\n                    [\n                      20.992255551657944,\n                      52.22302936227977\n                    ],\n                    [\n                      20.991979200137575,\n                      52.222968791652725\n                    ],\n                    [\n                      20.991694487375277,\n                      52.222925105380476\n                    ],\n                    [\n                      20.991404155310587,\n                      52.22289872418569\n                    ],\n                    [\n                      20.991111,\n                      52.2228899021337\n                    ],\n                    [\n                      20.990817844689413,\n                      52.22289872418569\n                    ],\n                    [\n                      20.990527512624723,\n                      52.222925105380476\n                    ],\n                    [\n                      20.990242799862425,\n                      52.222968791652725\n                    ],\n                    [\n                      20.989966448342056,\n                      52.22302936227977\n                    ],\n                    [\n                      20.98970111947983,\n                      52.22310623393334\n                    ],\n                    [\n                      20.98944936853773,\n                      52.22319866629741\n                    ],\n                    [\n                      20.989213620014954,\n                      52.223305769197765\n                    ],\n                    [\n                      20.988996144298646,\n                      52.22342651117494\n                    ],\n                    [\n                      20.98879903579884,\n                      52.22355972941769\n                    ],\n                    [\n                      20.98862419277814,\n                      52.2237041409615\n                    ],\n                    [\n                      20.988473299070414,\n                      52.22385835504428\n                    ],\n                    [\n                      20.988347807864553,\n                      52.22402088650009\n                    ],\n                    [\n                      20.98824892770947,\n                      52.22419017006218\n                    ],\n                    [\n                      20.988177610875116,\n                      52.2243645754373\n                    ],\n                    [\n                      20.988134544181584,\n                      52.22454242300634\n                    ],\n                    [\n                      20.988120142384684,\n                      52.224722\n                    ],\n                    [\n                      20.988134544181584,\n                      52.22490157699366\n                    ],\n                    [\n                      20.988177610875116,\n                      52.2250794245627\n                    ],\n                    [\n                      20.98824892770947,\n                      52.22525382993782\n                    ],\n                    [\n                      20.988347807864553,\n                      52.22542311349991\n                    ],\n                    [\n                      20.988473299070414,\n                      52.22558564495572\n                    ],\n                    [\n                      20.98862419277814,\n                      52.2257398590385\n                    ],\n                    [\n                      20.98879903579884,\n                      52.22588427058231\n                    ],\n                    [\n                      20.988996144298646,\n                      52.22601748882506\n                    ],\n                    [\n                      20.989213620014954,\n                      52.226138230802235\n                    ],\n                    [\n                      20.98944936853773,\n                      52.22624533370259\n                    ],\n                    [\n                      20.98970111947983,\n                      52.226337766066656\n                    ],\n                    [\n                      20.989966448342056,\n                      52.22641463772023\n                    ],\n                    [\n                      20.990242799862425,\n                      52.226475208347274\n                    ],\n                    [\n                      20.990527512624723,\n                      52.226518894619524\n                    ],\n                    [\n                      20.990817844689413,\n                      52.22654527581431\n                    ],\n                    [\n                      20.991111,\n                      52.2265540978663\n                    ]\n                  ]\n                ],\n                \"type\": \"Polygon\"\n              },\n              \"properties\": {\n                \"element_type\": \"circle\",\n                \"radius_nm\": 0.11\n              },\n              \"type\": \"Feature\"\n            }\n          }\n        ],\n        \"schedule_description\": \"On April 4-6, 11-13, 18-20, 25-27; May 2-4, 9-11, 16-18, 23-25, 30; May 31; June 1; June 6-8, 13-15, 20-22, 27-29 from 20:00 to 04:00.\",\n        \"schedules\": [\n          {\n            \"description\": \"On April 4-6, 11-13, 18-20, 25-27 from 20:00 to 04:00.\",\n            \"duration_hrs\": 8,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250404T200000Z\\nRRULE:FREQ=DAILY;UNTIL=20250627T040000Z;BYDAY=TH,FR,SA,SU,MO,TU,WE;COUNT=15\",\n            \"source\": \"APR 04-06 11-13 18-20 25-27 2000-0400\"\n          },\n          {\n            \"description\": \"On May 2-4, 9-11, 16-18, 23-25, 30 from 20:00 to 04:00.\",\n            \"duration_hrs\": 8,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250502T200000Z\\nRRULE:FREQ=DAILY;UNTIL=20250530T040000Z;BYDAY=TH,FR,SA,SU,MO,TU,WE;COUNT=12\",\n            \"source\": \"MAY 02-04 09-11 16-18 23-25 30 2000-0400\"\n          },\n          {\n            \"description\": \"On May 31 from 20:00 to 23:59.\",\n            \"duration_hrs\": 4,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250531T200000Z\\nRRULE:FREQ=DAILY;COUNT=1\",\n            \"source\": \"MAY 31 2000-2359\"\n          },\n          {\n            \"description\": \"On June 1 from 00:00 to 04:00 and 20:00 to 04:00.\",\n            \"duration_hrs\": 4,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250601T000000Z\\nRRULE:FREQ=DAILY;COUNT=1\",\n            \"source\": \"JUN 01 0000-0400 2000-0400\"\n          },\n          {\n            \"description\": \"On June 6-8, 13-15, 20-22, 27-29 from 20:00 to 04:00.\",\n            \"duration_hrs\": 8,\n            \"is_sunrise_sunset\": false,\n            \"rrule\": \"DTSTART:20250606T200000Z\\nRRULE:FREQ=DAILY;UNTIL=20250629T040000Z;BYDAY=TH,FR,SA,SU,MO,TU,WE;COUNT=12\",\n            \"source\": \"JUN 06-08 13-15 20-22 27-29 2000-0400\"\n          }\n        ],\n        \"subcategory\": \"NAVIGATION_AID_STATUS\"\n      },\n      \"is_estimated\": false,\n      \"is_permanent\": false,\n      \"issued_at\": \"2025-03-19T12:37:00Z\",\n      \"location\": \"EPWA\",\n      \"message\": \"NAVIGATION WARNING.\\nLASER AND REFLECTOR AT PSN: 521329N 0205928E - WARSZAWA.\\nANGLE OF BEAM: 000-090 DEG.\\nRANGE: 200M. \\nCONTACT: +48 571 409 606.\\nF) GND G) 1000FT AMSL\",\n      \"notam_number\": \"A0681/25\",\n      \"starts_at\": \"2025-04-04T18:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69123b35-a82c-4624-9dfd-d2105aa8f7a2",
+          "name": "Prioritise a NOTAM with AI",
+          "request": {
+            "name": "Prioritise a NOTAM with AI",
+            "description": {
+              "content": "Evaluate a single NOTAM against a flight profile. Provide the same flight context as flight briefings together with the NOTAM identifier to receive a model-assigned priority, explanation, and key considerations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notams",
+                "prioritisation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    {\n      \"location\": \"<string>\",\n      \"starts_at\": \"<dateTime>\",\n      \"ends_at\": \"<dateTime>\",\n      \"type\": \"<string>\",\n      \"always_include_est\": true,\n      \"excluded_classifications\": [\n        \"<string>\"\n      ]\n    }\n  ],\n  \"notam_id\": \"<string>\",\n  \"origin_runway\": \"<string>\",\n  \"destination_runway\": \"<string>\",\n  \"destination_procedure\": \"<string>\",\n  \"aircraft_type\": \"<string>\",\n  \"aircraft_details\": {\n    \"equipment\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"surveillance\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"adsb\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"adsc\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"faa_domestic\": \"<string>\",\n    \"fuel_type\": \"<string>\",\n    \"persons_on_board\": \"<integer>\",\n    \"pbn_levels\": \"<string>\",\n    \"nav_augmentations\": \"<string>\",\n    \"other_information\": \"<string>\",\n    \"cwt\": \"<string>\",\n    \"mtow_kg\": \"<integer>\",\n    \"mtow_lb\": \"<integer>\",\n    \"num_engines\": \"<integer>\",\n    \"wingspan_m\": \"<number>\",\n    \"wingspan_ft\": \"<number>\",\n    \"physical_class_engine\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37ae6f67-b936-4d11-8611-1d8ef45fa8f3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "prioritisation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notam_id\": \"263dbe90-b168-412f-aa9a-0555fa9cd736\",\n  \"locations\": [\n    {\n      \"location\": \"EPWA\",\n      \"type\": \"origin\",\n      \"starts_at\": \"2025-08-11T10:00:00Z\",\n      \"ends_at\": \"2025-08-11T16:00:00Z\"\n    },\n    {\n      \"location\": \"EGLL\",\n      \"type\": \"destination\",\n      \"starts_at\": \"2025-08-11T11:30:00Z\",\n      \"ends_at\": \"2025-08-11T18:00:00Z\"\n    },\n    {\n      \"location\": \"EPRZ\",\n      \"type\": \"alternate\",\n      \"starts_at\": \"2025-08-11T10:00:00Z\",\n      \"ends_at\": \"2025-08-11T20:00:00Z\"\n    }\n  ],\n  \"origin_runway\": \"RWY11\",\n  \"destination_runway\": \"RWY27L\",\n  \"destination_procedure\": \"ILS27L\",\n  \"aircraft_type\": \"B738\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notams\": [\n    {\n      \"notam\": {\n        \"id\": \"7e1b2056-301d-4723-a7e8-d0994fb7d6b6\",\n        \"notam_number\": \"A0681/25\",\n        \"location\": \"EPWA\",\n        \"icao_code\": \"EPWA\",\n        \"starts_at\": \"2025-04-04T18:00:00Z\",\n        \"ends_at\": \"2025-06-30T02:00:00Z\",\n        \"issued_at\": \"2025-03-19T12:37:00Z\",\n        \"is_estimated\": false,\n        \"is_permanent\": false,\n        \"message\": \"RWY 11 CLSD DUE WIP 2000-0400.\",\n        \"icao_message\": \"A0681/25 NOTAMN...\",\n        \"qcode\": \"QMRLC\",\n        \"interpretation\": {\n          \"description\": \"Runway 11 is closed nightly for work in progress between 20:00 and 04:00.\",\n          \"excerpt\": \"Runway 11 closed nightly 20:00-04:00.\",\n          \"category\": \"AERODROME\",\n          \"subcategory\": \"RUNWAY_OPERATIONS\",\n          \"affected_elements\": [\n            {\n              \"type\": \"RUNWAY\",\n              \"identifier\": \"11\",\n              \"effect\": \"CLOSED\",\n              \"details\": \"Runway 11 closed for work in progress.\"\n            }\n          ],\n          \"map_elements\": [],\n          \"schedules\": [],\n          \"schedule_description\": null\n        }\n      },\n      \"priority\": \"HIGH\",\n      \"explanation\": \"Runway 11 closure creates a primary operational impact.\",\n      \"considerations\": [\n        \"Runway 11 is closed nightly between 20:00 and 04:00\",\n        \"Aerodrome category / RUNWAY_OPERATIONS indicates critical impact on departures\"\n      ]\n    }\n  ],\n  \"total_count\": 1,\n  \"page\": 1,\n  \"per_page\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9ffb053-dd05-430c-809c-28891471a296",
+          "name": "Get active NOTAMs without interpretations",
+          "request": {
+            "name": "Get active NOTAMs without interpretations",
+            "description": {
+              "content": "Returns raw NOTAMs without AI interpretations. Same query parameters and response shape as /notams, but each NOTAM has interpretation set to null. The endpoint purpose is verifying query and raw data before AI interpretation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notams",
+                "raw"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "excluded_classifications",
+                  "value": "<string>",
+                  "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "notam_ids",
+                  "value": "<string>",
+                  "description": "List of NOTAM IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "starts_at",
+                  "value": "<dateTime>",
+                  "description": "Start date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to current UTC time."
+                },
+                {
+                  "disabled": false,
+                  "key": "ends_at",
+                  "value": "<dateTime>",
+                  "description": "End date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to 365 days from starts_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "always_include_est",
+                  "value": "<boolean>",
+                  "description": "Whether to always include EST times in the window, even if the notam already expired."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Number of NOTAMs per page. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations. Can be provided as location."
+                },
+                {
+                  "disabled": false,
+                  "key": "qcode",
+                  "value": "<string>",
+                  "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "qcode",
+                  "value": "<string>",
+                  "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory",
+                  "value": "<string>",
+                  "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_element",
+                  "value": "{\"value\":\"reference #/components/schemas/AffectedElementFilter not found in the OpenAPI spec\"}",
+                  "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70f9d147-f853-46d5-ae90-13dad537da31",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "excluded_classifications",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "notam_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ends_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "always_include_est",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subcategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "affected_element",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notams\": [\n    {\n      \"id\": \"7e1b2056-301d-4723-a7e8-d0994fb7d6b6\",\n      \"notam_number\": \"A0681/25\",\n      \"location\": \"EPWA\",\n      \"icao_code\": \"EPWA\",\n      \"starts_at\": \"2025-04-04T18:00:00Z\",\n      \"ends_at\": \"2025-06-30T02:00:00Z\",\n      \"issued_at\": \"2025-03-19T12:37:00Z\",\n      \"is_estimated\": false,\n      \"is_permanent\": false,\n      \"message\": \"NAVIGATION WARNING...\",\n      \"icao_message\": \"A0681/25 NOTAMN...\",\n      \"qcode\": \"QWOLW\",\n      \"interpretation\": null\n    }\n  ],\n  \"total_count\": 1,\n  \"page\": 1,\n  \"per_page\": 30\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7041fa49-c1a1-4f38-ac4f-1bc99ed00157",
+          "name": "Generate flight briefing",
+          "request": {
+            "name": "Generate flight briefing",
+            "description": {
+              "content": "Generate a flight-focused NOTAM briefing asynchronously. Supports both structured flight briefings (with origin/destination/alternate types) and flexible location-based briefings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notams",
+                "briefing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    {\n      \"location\": \"<string>\",\n      \"starts_at\": \"<dateTime>\",\n      \"ends_at\": \"<dateTime>\",\n      \"type\": \"<string>\",\n      \"always_include_est\": true,\n      \"excluded_classifications\": [\n        \"<string>\"\n      ]\n    }\n  ],\n  \"origin_runway\": \"<string>\",\n  \"destination_runway\": \"<string>\",\n  \"destination_procedure\": \"<string>\",\n  \"aircraft_type\": \"<string>\",\n  \"aircraft_details\": {\n    \"equipment\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"surveillance\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"adsb\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"adsc\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"faa_domestic\": \"<string>\",\n    \"fuel_type\": \"<string>\",\n    \"persons_on_board\": \"<integer>\",\n    \"pbn_levels\": \"<string>\",\n    \"nav_augmentations\": \"<string>\",\n    \"other_information\": \"<string>\",\n    \"cwt\": \"<string>\",\n    \"mtow_kg\": \"<integer>\",\n    \"mtow_lb\": \"<integer>\",\n    \"num_engines\": \"<integer>\",\n    \"wingspan_m\": \"<number>\",\n    \"wingspan_ft\": \"<number>\",\n    \"physical_class_engine\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aed9803a-1540-472d-8a9b-28d0fea546d2",
+              "name": "Briefing job created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    {\n      \"location\": \"EPWA\",\n      \"type\": \"origin\",\n      \"starts_at\": \"2025-08-11T10:00:00Z\",\n      \"ends_at\": \"2025-08-11T16:00:00Z\"\n    },\n    {\n      \"location\": \"EGLL\",\n      \"type\": \"destination\",\n      \"starts_at\": \"2025-08-11T11:30:00Z\",\n      \"ends_at\": \"2025-08-11T18:00:00Z\"\n    },\n    {\n      \"location\": \"EPRZ\",\n      \"type\": \"alternate\",\n      \"starts_at\": \"2025-08-11T10:00:00Z\",\n      \"ends_at\": \"2025-08-11T20:00:00Z\"\n    }\n  ],\n  \"origin_runway\": \"RWY11\",\n  \"destination_runway\": \"RWY27L\",\n  \"destination_procedure\": \"ILS27L\",\n  \"aircraft_type\": \"B738\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URL to check the briefing job status",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"status_url\": \"/api/v2/notams/briefing/550e8400-e29b-41d4-a716-446655440000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d29ea58e-6d1c-4560-b7a9-cc08c20a1013",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    {\n      \"location\": \"EPWA\",\n      \"type\": \"origin\",\n      \"starts_at\": \"2025-08-11T10:00:00Z\",\n      \"ends_at\": \"2025-08-11T16:00:00Z\"\n    },\n    {\n      \"location\": \"EGLL\",\n      \"type\": \"destination\",\n      \"starts_at\": \"2025-08-11T11:30:00Z\",\n      \"ends_at\": \"2025-08-11T18:00:00Z\"\n    },\n    {\n      \"location\": \"EPRZ\",\n      \"type\": \"alternate\",\n      \"starts_at\": \"2025-08-11T10:00:00Z\",\n      \"ends_at\": \"2025-08-11T20:00:00Z\"\n    }\n  ],\n  \"origin_runway\": \"RWY11\",\n  \"destination_runway\": \"RWY27L\",\n  \"destination_procedure\": \"ILS27L\",\n  \"aircraft_type\": \"B738\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34d3db36-380c-44f3-99bc-53863d7f804c",
+          "name": "Generate simple airport briefing",
+          "request": {
+            "name": "Generate simple airport briefing",
+            "description": {
+              "content": "Returns an immediate, airport-focused NOTAM briefing: a readable summary of active notices for the requested airports, plus the NOTAM identifiers referenced.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notams",
+                "briefing",
+                "simple"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>",
+                  "description": "(Required) Single ICAO airport code for the briefing. Multiple locations are not supported by this endpoint."
+                },
+                {
+                  "disabled": false,
+                  "key": "starts_at",
+                  "value": "<dateTime>",
+                  "description": "Start datetime for the briefing window. Accepts YYYY-MM-DD or full ISO datetime. Defaults to the start of the selected UTC day."
+                },
+                {
+                  "disabled": false,
+                  "key": "ends_at",
+                  "value": "<dateTime>",
+                  "description": "End datetime for the briefing window. Accepts YYYY-MM-DD or full ISO datetime. Defaults to the end of the selected UTC day."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "concile",
+                  "description": "Briefing verbosity. Supported values: concile, detailed."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e198e5d-49a3-4859-95aa-372edf1cc971",
+              "name": "Airport briefing generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing",
+                    "simple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ends_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "concile"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"EPWA\",\n  \"summary\": \"### EPWA\\n- Runway 11/29 closed daily 20:00-04:00 UTC.\\n- ILS RWY 11 unavailable during the same period.\",\n  \"notam_ids\": [\n    \"A0681/25\",\n    \"A0682/25\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3b9b0fc-1d19-4e9c-b836-92144916f2c2",
+              "name": "No NOTAMs available for the given parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing",
+                    "simple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "starts_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ends_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "concile"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"No NOTAMs available for the given parameters\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afd1665f-0c16-4e32-a927-48473ee4405d",
+          "name": "Get briefing job status",
+          "request": {
+            "name": "Get briefing job status",
+            "description": {
+              "content": "Get the status and result of a briefing job by UUID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notams",
+                "briefing",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) The UUID of the briefing job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c9e2adb-1755-4132-a03f-ee420c07fc0d",
+              "name": "Briefing completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the briefing job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"status\": \"completed\",\n  \"created_at\": \"2025-01-15T10:00:00Z\",\n  \"updated_at\": \"2025-01-15T10:05:30Z\",\n  \"response\": {\n    \"locations\": [\n      {\n        \"location\": \"EPWA\",\n        \"type\": \"origin\",\n        \"starts_at\": \"2025-08-11T10:00:00Z\",\n        \"ends_at\": \"2025-08-11T16:00:00Z\"\n      }\n    ],\n    \"briefing\": {\n      \"critical_operational_restrictions\": [\n        {\n          \"location_code\": \"EPWA\",\n          \"location_role\": \"origin\",\n          \"items\": [\n            \"Runway 11/29 closed affecting planned takeoff runway\"\n          ]\n        }\n      ],\n      \"text\": \"## Origin: EPWA\\n\\n**Runway Operations:**\\n- Runway 11/29 closed for maintenance [A1234/25](notam-link)\\n\\n## Destination: EGLL\\n\\n**Navigation Aids:**\\n- ILS 27L out of service [B5678/25](notam-link)\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6eb688b4-4d5d-45d3-b065-6569d1c77c3b",
+              "name": "Briefing job still processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the briefing job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"status\": \"processing\",\n  \"created_at\": \"2025-01-15T10:00:00Z\",\n  \"updated_at\": \"2025-01-15T10:02:15Z\",\n  \"response\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24447b65-207f-4a88-a606-746815f662af",
+              "name": "Briefing job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the briefing job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Briefing job not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83e37e8a-2407-4f19-b1bd-57392ea8f2c8",
+              "name": "Briefing job failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notams",
+                    "briefing",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the briefing job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"status\": \"failed\",\n  \"created_at\": \"2025-01-15T10:00:00Z\",\n  \"updated_at\": \"2025-01-15T10:03:45Z\",\n  \"response\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.notamify.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d78dc723-0d75-43fd-bb85-c2807295b964",
+    "name": "Notamify API V2 Notams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

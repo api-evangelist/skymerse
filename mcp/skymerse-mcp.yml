@@ -7,22 +7,24 @@ server:
   transport: stdio
   runtime: python>=3.10
   repository: https://github.com/skymerse/notamify-mcp
-  install: uv sync   # or pip install -r requirements.txt
+  install: uv sync
   run: uv run mcp install notamify_server.py --name "Notamify NOTAM Server"
   auth: NOTAMIFY_API_KEY environment variable
   official: true
-  notes: >-
-    Official Skymerse/Notamify Model Context Protocol server exposing NOTAM data
-    to LLMs through the Notamify API. Requires a Notamify API key.
+  notes: Official Skymerse/Notamify Model Context Protocol server exposing NOTAM data to LLMs through
+    the Notamify API. Requires a Notamify API key.
 tools:
 - name: get_notams
-  description: >-
-    Retrieve active NOTAMs for up to five ICAO airport codes with optional
-    ISO 8601 time-range filtering; returns AI-generated interpretations.
+  description: Retrieve active NOTAMs for up to five ICAO airport codes with optional ISO 8601 time-range
+    filtering; returns AI-generated interpretations.
   source_operation: openapi/skymerse-notamify-openapi-original.json#GET /notams
 - name: get_affected_elements
-  description: >-
-    Extract affected infrastructure from NOTAMs — runways, navigation systems,
-    airspace restrictions — as categorized summaries with flight-planning
-    recommendations.
+  description: Extract affected infrastructure from NOTAMs — runways, navigation systems, airspace restrictions
+    — as categorized summaries with flight-planning recommendations.
   source_operation: openapi/skymerse-notamify-openapi-original.json#GET /notams
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census

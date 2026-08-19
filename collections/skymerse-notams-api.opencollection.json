@@ -1,0 +1,490 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Notamify API V2 Notams API",
+    "version": "0.0.11"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get recently expired NOTAMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams/recently-expired",
+            "params": [
+              {
+                "name": "expired_after",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound for when the NOTAM was marked inactive. Defaults to 24 hours before current UTC time."
+              },
+              {
+                "name": "expired_before",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound for when the NOTAM was marked inactive. Defaults to current UTC time."
+              },
+              {
+                "name": "excluded_classifications",
+                "value": "",
+                "type": "query",
+                "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of NOTAMs per page. Defaults to 30."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations."
+              }
+            ]
+          },
+          "docs": "Returns inactive NOTAMs for the requested locations whose expired_at timestamp falls within the requested recent window."
+        },
+        {
+          "info": {
+            "name": "GET /notams/archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams/archive",
+            "params": [
+              {
+                "name": "valid_at",
+                "value": "",
+                "type": "query",
+                "description": "Date to check NOTAM validity (YYYY-MM-DD). Cannot be in the future."
+              },
+              {
+                "name": "notam_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of NOTAM IDs"
+              },
+              {
+                "name": "always_include_est",
+                "value": "",
+                "type": "query",
+                "description": "Whether to always include EST times in the window, even if the notam already expired."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of NOTAMs per page. Defaults to 30."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "subcategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "affected_element",
+                "value": "",
+                "type": "query",
+                "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, ROUTE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /notams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams",
+            "params": [
+              {
+                "name": "excluded_classifications",
+                "value": "",
+                "type": "query",
+                "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+              },
+              {
+                "name": "notam_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of NOTAM IDs"
+              },
+              {
+                "name": "starts_at",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to current UTC time."
+              },
+              {
+                "name": "ends_at",
+                "value": "",
+                "type": "query",
+                "description": "End date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to 365 days from starts_at."
+              },
+              {
+                "name": "always_include_est",
+                "value": "",
+                "type": "query",
+                "description": "Whether to always include EST times in the window, even if the notam already expired."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of NOTAMs per page. Defaults to 30."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations. Can be provided as location."
+              },
+              {
+                "name": "qcode",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "subcategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "affected_element",
+                "value": "",
+                "type": "query",
+                "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /notams/nearby",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams/nearby",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "radius_nm",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in nautical miles. Defaults to 1."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of NOTAMs per page. Defaults to 30."
+              },
+              {
+                "name": "excluded_classifications",
+                "value": "",
+                "type": "query",
+                "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+              },
+              {
+                "name": "qcode",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+              },
+              {
+                "name": "notam_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of NOTAM IDs"
+              },
+              {
+                "name": "starts_at",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to current UTC time."
+              },
+              {
+                "name": "ends_at",
+                "value": "",
+                "type": "query",
+                "description": "End date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to 365 days from starts_at."
+              },
+              {
+                "name": "always_include_est",
+                "value": "",
+                "type": "query",
+                "description": "Whether to always include EST times in the window, even if the notam already expired."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "subcategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "affected_element",
+                "value": "",
+                "type": "query",
+                "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Prioritise a NOTAM with AI",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.notamify.com/api/v2/notams/prioritisation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluate a single NOTAM against a flight profile. Provide the same flight context as flight briefings together with the NOTAM identifier to receive a model-assigned priority, explanation, and key considerations."
+        },
+        {
+          "info": {
+            "name": "Get active NOTAMs without interpretations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams/raw",
+            "params": [
+              {
+                "name": "excluded_classifications",
+                "value": "",
+                "type": "query",
+                "description": "Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded."
+              },
+              {
+                "name": "notam_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of NOTAM IDs"
+              },
+              {
+                "name": "starts_at",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to current UTC time."
+              },
+              {
+                "name": "ends_at",
+                "value": "",
+                "type": "query",
+                "description": "End date for the time period (YYYY-MM-DDTHH:MM:SSZ). When not provided, default to 365 days from starts_at."
+              },
+              {
+                "name": "always_include_est",
+                "value": "",
+                "type": "query",
+                "description": "Whether to always include EST times in the window, even if the notam already expired."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of NOTAMs per page. Defaults to 30."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "List of 4-character ICAO airport codes or 3-character domestic airport codes. Maximum 5 locations. Can be provided as location."
+              },
+              {
+                "name": "qcode",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Q-code(s) (e.g., QMRLC, QWULW). Returns only NOTAMs with matching Q-codes."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation category(ies). Valid values: ALL, AERODROME, AIRSPACE, NAVIGATION, COMMUNICATION, OPERATIONS, OBSTACLES, ADMINISTRATIVE, WEATHER, SAFETY, OTHER. When 'ALL' is provided, no category filtering is applied. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "subcategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter by interpretation subcategory(ies). Returns only NOTAMs with matching subcategories. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              },
+              {
+                "name": "affected_element",
+                "value": "",
+                "type": "query",
+                "description": "Filter by affected element effect and/or type. Format: 'effect:closed,type:runway' or 'closed runway' or 'closed' or 'runway'. Valid effects: CLOSED, RESTRICTED, HAZARD, UNSERVICEABLE, WORK_IN_PROGRESS, CAUTION. Valid types: AERODROME, RUNWAY, TAXIWAY, APPROACH, NAVAID, AIRSPACE, APRON, LIGHTING, SERVICE, PROCEDURE, OTHER. Note: Filtering happens after interpretation; total_count reflects pre-filter count and results may be fewer than per_page."
+              }
+            ]
+          },
+          "docs": "Returns raw NOTAMs without AI interpretations. Same query parameters and response shape as /notams, but each NOTAM has interpretation set to null. The endpoint purpose is verifying query and raw data before AI interpretation."
+        },
+        {
+          "info": {
+            "name": "Generate flight briefing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.notamify.com/api/v2/notams/briefing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a flight-focused NOTAM briefing asynchronously. Supports both structured flight briefings (with origin/destination/alternate types) and flexible location-based briefings."
+        },
+        {
+          "info": {
+            "name": "Generate simple airport briefing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams/briefing/simple",
+            "params": [
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "Single ICAO airport code for the briefing. Multiple locations are not supported by this endpoint."
+              },
+              {
+                "name": "starts_at",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime for the briefing window. Accepts YYYY-MM-DD or full ISO datetime. Defaults to the start of the selected UTC day."
+              },
+              {
+                "name": "ends_at",
+                "value": "",
+                "type": "query",
+                "description": "End datetime for the briefing window. Accepts YYYY-MM-DD or full ISO datetime. Defaults to the end of the selected UTC day."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Briefing verbosity. Supported values: concile, detailed."
+              }
+            ]
+          },
+          "docs": "Returns an immediate, airport-focused NOTAM briefing: a readable summary of active notices for the requested airports, plus the NOTAM identifiers referenced."
+        },
+        {
+          "info": {
+            "name": "Get briefing job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.notamify.com/api/v2/notams/briefing/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the briefing job"
+              }
+            ]
+          },
+          "docs": "Get the status and result of a briefing job by UUID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

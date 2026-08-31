@@ -71,7 +71,7 @@ apis:
   humanURL: https://skymerse.gitbook.io/notamify-api
   baseURL: https://api.notamify.com/api/v2
   tags:
-  - NOTAMs
+  - Notams
   tags_raw:
   - Notams
   properties:

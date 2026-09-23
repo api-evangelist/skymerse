@@ -1,16 +1,35 @@
 {
   "provider": "skymerse",
   "sources": [
-    "skymerse-notams-api-openapi.yml"
+    "_original/skymerse-notamify-openapi-original.json"
   ],
   "outputs": [
     "skymerse-notams-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [
-    "skymerse-notams-api-openapi.yml: dangling $ref: #/components/schemas/AffectedElementFilter"
+    "skymerse-notamify-openapi-original.json: dangling $ref: #/components/schemas/AffectedElementFilter"
   ],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "skymerse-notamify-openapi-original.json: upgraded openapi 3.1.1 -> OpenAPI 3.2.0",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams/recently-expired -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams/archive -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams/nearby -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths POST /notams/prioritisation -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams/raw -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths POST /notams/briefing -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams/briefing/simple -> Notams",
+    "skymerse-notamify-openapi-original.json: tagged paths GET /notams/briefing/{uuid} -> Notams",
+    "skymerse-notamify-openapi-original.json: declared missing tag: Notams",
+    "superseded outputs removed: skymerse-nota-ms-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 1 total)"
+  ],
+  "skipped": [
+    "skymerse-nota-ms-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

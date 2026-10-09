@@ -1,0 +1,78 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://skymerse.gitbook.io/notamify-api/basics/notamify-api-credits-and-costs
+sources:
+- https://skymerse.gitbook.io/notamify-api/basics/notamify-api-credits-and-costs
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: Credit-based API pricing; new Pro members receive 50 free credits. Endpoint costs listed in credits
+  (1 credit/page, 5 credits per briefing). Requires active Notamify Pro plan. Enterprise/usage-based options
+  via Contact Sales. Period not explicitly stated as monthly on page.
+plan_count: 3
+currency: USD
+plans:
+- name: Intro
+  price_text: $15
+  price: 15
+  currency: USD
+  period: month
+  unit: package
+  included_quota: 50 Included Calls
+  overage: Cost per Credit $0.30
+- name: Growth
+  price_text: $79
+  price: 79
+  currency: USD
+  period: month
+  unit: package
+  included_quota: 300 Included Calls
+  overage: Cost per Credit $0.263
+- name: Scale
+  price_text: $199
+  price: 199
+  currency: USD
+  period: month
+  unit: package
+  included_quota: 1,000 Included Calls
+  overage: Cost per Credit $0.199
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units: []
+  plans:
+  - name: Intro
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Growth
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Scale
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month

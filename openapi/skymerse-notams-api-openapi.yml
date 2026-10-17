@@ -1771,213 +1771,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GroupedMeasurementValueDTO:
-      properties:
-        kind:
-          type: string
-          const: MEASUREMENTS
-          title: Kind
-          default: MEASUREMENTS
-        raw_string:
-          type: string
-          title: Raw String
-        values:
-          items:
-            $ref: '#/components/schemas/MeasurementComponentValueDTO'
-          type: array
-          title: Values
-      type: object
-      required:
-      - raw_string
-      title: GroupedMeasurementValueDTO
-    BriefingResponse:
-      properties:
-        critical_operational_restrictions:
-          items:
-            $ref: '#/components/schemas/CriticalOperationalRestrictionGroup'
-          type: array
-          title: Critical Operational Restrictions
-          description: Critical operational restrictions grouped by flight location so the client can render one heading per location.
-        text:
-          type: string
-          title: Text
-          description: The flight briefing text
-      type: object
-      required:
-      - text
-      title: BriefingResponse
-    AircraftDetails:
-      properties:
-        equipment:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Equipment
-          description: List of equipment codes as per ICAO flight plan (e.g., 'S' for standard equipment).
-        surveillance:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Surveillance
-          description: List of surveillance equipment codes (e.g., 'SSR' for Secondary Surveillance Radar).
-        adsb:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Adsb
-          description: List of ADS-B equipment codes (e.g., 'B1' for ADS-B with dedicated 1090 MHz out capability).
-        adsc:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Adsc
-          description: List of ADS-C equipment codes (e.g., 'D1' for ADS-C with FANS 1/A capability).
-        faa_domestic:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Faa Domestic
-          description: FAA domestic equipment code (e.g., 'A' for RNAV capability).
-        fuel_type:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Fuel Type
-          description: Type of fuel used by the aircraft (e.g., 'Jet A1').
-        persons_on_board:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Persons On Board
-          description: Number of persons on board the aircraft.
-        pbn_levels:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Pbn Levels
-          description: Performance Based Navigation levels (e.g., 'C2' for RNAV 2).
-        nav_augmentations:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Nav Augmentations
-          description: Navigation augmentations used (e.g., 'SBAS' for Satellite-Based Augmentation System).
-        other_information:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Other Information
-          description: Any other relevant information of the aircraft equipment and configuration.
-        cwt:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Cwt
-          description: Category Wake Turbulence (e.g., 'M' for Medium, 'H' for Heavy, 'J' for Super).
-        mtow_kg:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Mtow Kg
-          description: Maximum Takeoff Weight in kilograms.
-        mtow_lb:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Mtow Lb
-          description: Maximum Takeoff Weight in pounds.
-        num_engines:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Num Engines
-          description: Number of engines on the aircraft.
-        wingspan_m:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Wingspan M
-          description: Wingspan in meters (rounded to 1 decimal place).
-        wingspan_ft:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Wingspan Ft
-          description: Wingspan in feet (rounded to 1 decimal place).
-        physical_class_engine:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Physical Class Engine
-          description: Physical class of engine (e.g., 'Jet', 'Propeller', 'Piston').
-      type: object
-      title: AircraftDetails
-    NotamMapElementDTO:
-      properties:
-        id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Id
-          description: Unique identifier of the persisted map element.
-        element_type:
-          type: string
-          title: Element Type
-          description: Type of the map element (e.g., line, polygon, point).
-        coordinates:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Coordinates
-          description: Coordinates of the map element.
-        description:
-          type: string
-          title: Description
-          description: Description of the map element.
-        area_number:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Area Number
-          description: Optional area number identifier for the element.
-        geojson:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Geojson
-          description: GeoJSON representation of the map element.
-        bottom:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Bottom
-          description: Lower vertical limit with value, unit, reference, value_ft, and raw_string.
-        top:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Top
-          description: Upper vertical limit with value, unit, reference, value_ft, raw_string, and optional embedded height data.
-      type: object
-      required:
-      - element_type
-      - coordinates
-      - description
-      title: NotamMapElementDTO
-      description: Data Transfer Object for NOTAM map elements.
     ScalarMeasurementValueDTO:
       properties:
         kind:
@@ -2002,159 +1795,6 @@ components:
       - value
       - unit
       title: ScalarMeasurementValueDTO
-    BriefingJobStatusDTO:
-      properties:
-        uuid:
-          type: string
-          title: Uuid
-          description: Unique identifier for the briefing job
-        status:
-          $ref: '#/components/schemas/BriefingStatus'
-          description: Current job status
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: When the job was created
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-          description: When the job was last updated
-        response:
-          anyOf:
-          - $ref: '#/components/schemas/GenerateFlightBriefingResponse'
-          - type: 'null'
-          description: Generated briefing response if completed
-      type: object
-      required:
-      - uuid
-      - status
-      - created_at
-      - updated_at
-      title: BriefingJobStatusDTO
-      description: DTO returned by the status endpoint for a briefing job.
-    MeasurementComponentValueDTO:
-      properties:
-        type:
-          type: string
-          enum:
-          - ALTITUDE
-          - HEIGHT
-          title: Type
-        value:
-          type: integer
-          title: Value
-        unit:
-          type: string
-          title: Unit
-      type: object
-      required:
-      - type
-      - value
-      - unit
-      title: MeasurementComponentValueDTO
-    NotamPriority:
-      type: string
-      enum:
-      - NONE
-      - HIGH
-      - MEDIUM
-      - LOW
-      title: NotamPriority
-      description: Priority levels returned by the prioritisation model.
-    NotamInterpretationDTO:
-      properties:
-        description:
-          type: string
-          title: Description
-          description: Detailed description of the NOTAM interpretation.
-        excerpt:
-          type: string
-          title: Excerpt
-          description: Brief excerpt summarizing the interpretation.
-        category:
-          type: string
-          title: Category
-          description: Interpretation category.
-        subcategory:
-          type: string
-          title: Subcategory
-          description: Interpretation subcategory.
-        map_elements:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/NotamMapElementDTO'
-            type: array
-          - type: 'null'
-          title: Map Elements
-          description: List of map elements extracted from the interpretation.
-        affected_elements:
-          items:
-            $ref: '#/components/schemas/AffectedElementDTO'
-          type: array
-          title: Affected Elements
-          description: List of affected elements described in the NOTAM.
-        schedules:
-          items:
-            $ref: '#/components/schemas/NotamScheduleInterpretationDTO'
-          type: array
-          title: Schedules
-          description: List of schedule interpretations for the NOTAM.
-        schedule_description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Schedule Description
-          description: Human-readable schedule description.
-      type: object
-      required:
-      - description
-      - excerpt
-      - category
-      - subcategory
-      title: NotamInterpretationDTO
-    BriefingStatus:
-      type: string
-      enum:
-      - pending
-      - processing
-      - completed
-      - failed
-      title: BriefingStatus
-      description: Status of a briefing job.
-    NotamScheduleInterpretationDTO:
-      properties:
-        source:
-          type: string
-          title: Source
-          description: Source of the schedule interpretation.
-        description:
-          type: string
-          title: Description
-          description: Description of the schedule interpretation.
-        rrule:
-          type: string
-          title: Rrule
-          description: Recurrence rule for the schedule.
-        duration_hrs:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Duration Hrs
-          description: Duration of each recurrence of the schedule period in hours.
-        is_sunrise_sunset:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Is Sunrise Sunset
-          description: Indicates if the schedule is based on sunrise/sunset timings.
-      type: object
-      required:
-      - source
-      - description
-      - rrule
-      title: NotamScheduleInterpretationDTO
     PrioritizedNotamDTO:
       properties:
         notam:
@@ -2178,295 +1818,6 @@ components:
       - explanation
       title: PrioritizedNotamDTO
       description: API representation combining original NOTAM data with GPT assessment.
-    FractionalMeasurementValueDTO:
-      properties:
-        kind:
-          type: string
-          const: FRACTIONAL_MEASUREMENT
-          title: Kind
-          default: FRACTIONAL_MEASUREMENT
-        raw_string:
-          type: string
-          title: Raw String
-        numerator:
-          type: integer
-          title: Numerator
-        denominator:
-          type: integer
-          title: Denominator
-        unit:
-          type: string
-          title: Unit
-      type: object
-      required:
-      - raw_string
-      - numerator
-      - denominator
-      - unit
-      title: FractionalMeasurementValueDTO
-    ProcedureCapabilityDTO:
-      properties:
-        scheme:
-          type: string
-          const: ILS_CATEGORY
-          title: Scheme
-        category:
-          anyOf:
-          - type: string
-            enum:
-            - CAT_I
-            - CAT_II
-            - CAT_IIIA
-            - CAT_IIIB
-            - CAT_IIIC
-          - type: 'null'
-          title: Category
-        level:
-          anyOf:
-          - type: string
-            enum:
-            - LVL_1
-            - LVL_2
-            - LVL_3
-          - type: 'null'
-          title: Level
-        classification:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Classification
-        source_label:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Source Label
-      type: object
-      required:
-      - scheme
-      title: ProcedureCapabilityDTO
-    NotamPrioritisationResult:
-      properties:
-        notams:
-          items:
-            $ref: '#/components/schemas/PrioritizedNotamDTO'
-          type: array
-          title: Notams
-        total_count:
-          type: integer
-          title: Total Count
-        page:
-          type: integer
-          title: Page
-        per_page:
-          type: integer
-          title: Per Page
-      type: object
-      required:
-      - notams
-      - total_count
-      - page
-      - per_page
-      title: NotamPrioritisationResult
-      description: Envelope returned by the API endpoint.
-    CriticalOperationalRestrictionGroup:
-      properties:
-        location_code:
-          type: string
-          title: Location Code
-          description: ICAO code of the location this restriction group belongs to.
-        location_role:
-          anyOf:
-          - $ref: '#/components/schemas/LocationType'
-          - type: 'null'
-          description: Flight role of the location, used by the client to render labels such as Origin or Destination.
-        items:
-          items:
-            type: string
-          type: array
-          title: Items
-          description: Critical operational restriction items for this location. Items must not repeat the location label.
-      type: object
-      required:
-      - location_code
-      title: CriticalOperationalRestrictionGroup
-    AffectedElementReferenceDTO:
-      properties:
-        relation:
-          type: string
-          title: Relation
-          description: Relation to the referenced object.
-        type:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Type
-          description: Type of the referenced object when available.
-        identifier:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Identifier
-          description: Identifier of the referenced object when available.
-        role:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Role
-          description: Role of this referenced object inside an ordered route when available.
-        sequence:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Sequence
-          description: One-based order of this referenced object inside an ordered route when available.
-      type: object
-      required:
-      - relation
-      title: AffectedElementReferenceDTO
-    NotamListResult:
-      properties:
-        notams:
-          items:
-            $ref: '#/components/schemas/NotamDTO'
-          type: array
-          title: Notams
-        total_count:
-          type: integer
-          title: Total Count
-        page:
-          type: integer
-          title: Page
-        per_page:
-          type: integer
-          title: Per Page
-      type: object
-      required:
-      - notams
-      - total_count
-      - page
-      - per_page
-      title: NotamListResult
-    GenerateFlightBriefingRequest:
-      properties:
-        locations:
-          items:
-            $ref: '#/components/schemas/LocationWithType'
-          type: array
-          maxItems: 30
-          minItems: 1
-          title: Locations
-          description: List of locations (airports/FIRs) with their types and time windows
-        origin_runway:
-          anyOf:
-          - type: string
-            maxLength: 7
-            minLength: 1
-          - type: 'null'
-          title: Origin Runway
-          description: The planned origin airport runway (e.g. 33)
-        destination_runway:
-          anyOf:
-          - type: string
-            maxLength: 7
-            minLength: 1
-          - type: 'null'
-          title: Destination Runway
-          description: The planned destination airport runway (e.g. 18R)
-        destination_procedure:
-          anyOf:
-          - type: string
-            maxLength: 15
-            minLength: 1
-          - type: 'null'
-          title: Destination Procedure
-          description: The planned destination airport landing procedure (e.g. ILS18R etc.)
-        aircraft_type:
-          anyOf:
-          - type: string
-            maxLength: 15
-            minLength: 1
-          - type: 'null'
-          title: Aircraft Type
-          description: The type of aircraft (e.g. A320, B737, etc.)
-        aircraft_details:
-          anyOf:
-          - $ref: '#/components/schemas/AircraftDetails'
-          - type: 'null'
-          description: The details of the aircraft
-      type: object
-      required:
-      - locations
-      title: GenerateFlightBriefingRequest
-    ValueComponentDTO:
-      properties:
-        type:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Type
-        value:
-          anyOf:
-          - type: integer
-          - type: string
-          title: Value
-        unit:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Unit
-      type: object
-      required:
-      - value
-      title: ValueComponentDTO
-    LocationType:
-      type: string
-      enum:
-      - origin
-      - destination
-      - alternate
-      - fir
-      title: LocationType
-      description: Types of locations in a flight plan.
-    SimpleAirportBriefingResponse:
-      properties:
-        location:
-          type: string
-          title: Location
-          description: ICAO airport code covered by the briefing.
-        summary:
-          type: string
-          title: Summary
-          description: Generated airport briefing summary text.
-        notam_ids:
-          items:
-            type: string
-          type: array
-          title: Notam Ids
-          description: NOTAM numbers used to generate the briefing, in briefing order.
-      type: object
-      required:
-      - location
-      - summary
-      title: SimpleAirportBriefingResponse
-    ValueDTO:
-      properties:
-        kind:
-          type: string
-          const: VALUE
-          title: Kind
-          default: VALUE
-        raw_string:
-          type: string
-          title: Raw String
-        values:
-          items:
-            $ref: '#/components/schemas/ValueComponentDTO'
-          type: array
-          title: Values
-      type: object
-      required:
-      - raw_string
-      title: ValueDTO
     AffectedElementDTO:
       properties:
         type:
@@ -2504,175 +1855,6 @@ components:
       - identifier
       - effect
       title: AffectedElementDTO
-    GenerateFlightBriefingResponse:
-      properties:
-        locations:
-          items:
-            $ref: '#/components/schemas/LocationWithType'
-          type: array
-          title: Locations
-          description: The locations that are affected by the flight briefing
-        briefing:
-          $ref: '#/components/schemas/BriefingResponse'
-          description: The flight briefing
-      type: object
-      required:
-      - locations
-      - briefing
-      title: GenerateFlightBriefingResponse
-    AircraftDesignatorValueDTO:
-      properties:
-        kind:
-          type: string
-          enum:
-          - family
-          - variant
-          title: Kind
-        designator:
-          type: string
-          title: Designator
-        source:
-          type: string
-          title: Source
-      type: object
-      required:
-      - kind
-      - designator
-      - source
-      title: AircraftDesignatorValueDTO
-    NotamDTO:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-          description: Unique identifier for the NOTAM.
-        notam_number:
-          type: string
-          title: Notam Number
-          description: NOTAM number or identifier.
-        location:
-          type: string
-          title: Location
-          description: Location where the NOTAM is applicable.
-        icao_code:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Icao Code
-          description: ICAO code for the airport or facility.
-        classification:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Classification
-          description: 'Classification of the NOTAM: DOM, FDC, INTL, or MIL.'
-        starts_at:
-          type: string
-          format: date-time
-          title: Starts At
-          description: Start datetime of NOTAM validity.
-        ends_at:
-          type: string
-          format: date-time
-          title: Ends At
-          description: End datetime of NOTAM validity.
-        issued_at:
-          type: string
-          format: date-time
-          title: Issued At
-          description: Datetime when the NOTAM was issued.
-        is_estimated:
-          type: boolean
-          title: Is Estimated
-          description: Indicates if the NOTAM times are estimated (EST).
-        is_permanent:
-          type: boolean
-          title: Is Permanent
-          description: Indicates if the NOTAM is permanen (PERM)t.
-        message:
-          type: string
-          title: Message
-          description: Only the message of the NOTAM.
-        icao_message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Icao Message
-          description: Only the ICAO formatted message of the NOTAM.
-        qcode:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Qcode
-          description: Raw 5-letter Q-code extracted from the NOTAM message (e.g., QMRLC).
-        interpretation:
-          anyOf:
-          - $ref: '#/components/schemas/NotamInterpretationDTO'
-          - type: 'null'
-          description: Interpretation details of the NOTAM.
-      type: object
-      required:
-      - id
-      - notam_number
-      - location
-      - starts_at
-      - ends_at
-      - issued_at
-      - is_estimated
-      - is_permanent
-      - message
-      title: NotamDTO
-      description: "Data Transfer Object (DTO) for a NOTAM (Notice to Air Missions).\n\nAttributes:\n    notam_number (str): The unique identifier for the NOTAM\n    location (str): The facility designator/location identifier this NOTAM applies to\n    starts_at (datetime): When this NOTAM becomes active\n    ends_at (datetime): When this NOTAM expires\n    message (str): The human-readable traditional format message\n    icao_message (str): The ICAO format message\n    interpretation (Optional[NotamInterpretationDTO]): Optional interpretation of the NOTAM content"
-    LocationWithType:
-      properties:
-        location:
-          type: string
-          maxLength: 4
-          minLength: 1
-          title: Location
-          description: The ICAO code of the location (e.g. KLAX for airport, KZNY for FIR)
-        type:
-          anyOf:
-          - $ref: '#/components/schemas/LocationType'
-          - type: 'null'
-          description: The type of location in the flight plan (optional for flexible briefings)
-        starts_at:
-          type: string
-          format: date-time
-          title: Starts At
-          description: The start time of the window (e.g. 2025-01-01T00:00:00Z). Must be in the future.
-        ends_at:
-          type: string
-          format: date-time
-          title: Ends At
-          description: The end time of the window (e.g. 2025-01-01T00:00:00Z). Must be in the future.
-        always_include_est:
-          type: boolean
-          title: Always Include Est
-          description: Whether to always include EST times in the window, even if the notam ends_at is expired but notams it not in cancelled.
-          default: true
-        excluded_classifications:
-          anyOf:
-          - items:
-              type: string
-              enum:
-              - DOM
-              - FDC
-              - INTL
-              - MIL
-            type: array
-            minItems: 1
-          - type: 'null'
-          title: Excluded Classifications
-          description: 'Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded.'
-      type: object
-      required:
-      - location
-      - starts_at
-      - ends_at
-      title: LocationWithType
-      description: Location (airport or FIR) with optional type and time window.
     RecentlyExpiredNotamDTO:
       properties:
         id:
@@ -2778,7 +1960,115 @@ components:
         This intentionally extends only the new recently expired endpoint''s response
 
         shape so existing v2 NotamDTO-based endpoints do not gain extra fields.'
-    NotamPrioritisationRequest:
+    LocationWithType:
+      properties:
+        location:
+          type: string
+          maxLength: 4
+          minLength: 1
+          title: Location
+          description: The ICAO code of the location (e.g. KLAX for airport, KZNY for FIR)
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/LocationType'
+          - type: 'null'
+          description: The type of location in the flight plan (optional for flexible briefings)
+        starts_at:
+          type: string
+          format: date-time
+          title: Starts At
+          description: The start time of the window (e.g. 2025-01-01T00:00:00Z). Must be in the future.
+        ends_at:
+          type: string
+          format: date-time
+          title: Ends At
+          description: The end time of the window (e.g. 2025-01-01T00:00:00Z). Must be in the future.
+        always_include_est:
+          type: boolean
+          title: Always Include Est
+          description: Whether to always include EST times in the window, even if the notam ends_at is expired but notams it not in cancelled.
+          default: true
+        excluded_classifications:
+          anyOf:
+          - items:
+              type: string
+              enum:
+              - DOM
+              - FDC
+              - INTL
+              - MIL
+            type: array
+            minItems: 1
+          - type: 'null'
+          title: Excluded Classifications
+          description: 'Classifications to exclude: DOM, FDC, INTL, MIL. When empty, no classifications are excluded.'
+      type: object
+      required:
+      - location
+      - starts_at
+      - ends_at
+      title: LocationWithType
+      description: Location (airport or FIR) with optional type and time window.
+    ProcedureCapabilityDTO:
+      properties:
+        scheme:
+          type: string
+          const: ILS_CATEGORY
+          title: Scheme
+        category:
+          anyOf:
+          - type: string
+            enum:
+            - CAT_I
+            - CAT_II
+            - CAT_IIIA
+            - CAT_IIIB
+            - CAT_IIIC
+          - type: 'null'
+          title: Category
+        level:
+          anyOf:
+          - type: string
+            enum:
+            - LVL_1
+            - LVL_2
+            - LVL_3
+          - type: 'null'
+          title: Level
+        classification:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Classification
+        source_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Source Label
+      type: object
+      required:
+      - scheme
+      title: ProcedureCapabilityDTO
+    GroupedMeasurementValueDTO:
+      properties:
+        kind:
+          type: string
+          const: MEASUREMENTS
+          title: Kind
+          default: MEASUREMENTS
+        raw_string:
+          type: string
+          title: Raw String
+        values:
+          items:
+            $ref: '#/components/schemas/MeasurementComponentValueDTO'
+          type: array
+          title: Values
+      type: object
+      required:
+      - raw_string
+      title: GroupedMeasurementValueDTO
+    GenerateFlightBriefingRequest:
       properties:
         locations:
           items:
@@ -2825,21 +2115,36 @@ components:
           - $ref: '#/components/schemas/AircraftDetails'
           - type: 'null'
           description: The details of the aircraft
-        notam_id:
-          type: string
-          title: Notam Id
-          description: Identifier of the NOTAM to prioritise
       type: object
       required:
       - locations
-      - notam_id
-      title: NotamPrioritisationRequest
-      description: Flight profile request extended with the NOTAM identifier to evaluate.
-    RecentlyExpiredNotamListResult:
+      title: GenerateFlightBriefingRequest
+    SimpleAirportBriefingResponse:
+      properties:
+        location:
+          type: string
+          title: Location
+          description: ICAO airport code covered by the briefing.
+        summary:
+          type: string
+          title: Summary
+          description: Generated airport briefing summary text.
+        notam_ids:
+          items:
+            type: string
+          type: array
+          title: Notam Ids
+          description: NOTAM numbers used to generate the briefing, in briefing order.
+      type: object
+      required:
+      - location
+      - summary
+      title: SimpleAirportBriefingResponse
+    NotamPrioritisationResult:
       properties:
         notams:
           items:
-            $ref: '#/components/schemas/RecentlyExpiredNotamDTO'
+            $ref: '#/components/schemas/PrioritizedNotamDTO'
           type: array
           title: Notams
         total_count:
@@ -2857,35 +2162,62 @@ components:
       - total_count
       - page
       - per_page
-      title: RecentlyExpiredNotamListResult
-    AffectedElementSemanticsDTO:
+      title: NotamPrioritisationResult
+      description: Envelope returned by the API endpoint.
+    MeasurementComponentValueDTO:
       properties:
-        conditions:
-          items:
-            $ref: '#/components/schemas/AffectedElementClauseDTO'
-          type: array
-          title: Conditions
-          description: Machine-readable conditions, including stand or gate subsets when explicitly stated.
-        exceptions:
-          items:
-            $ref: '#/components/schemas/AffectedElementClauseDTO'
-          type: array
-          title: Exceptions
-          description: Machine-readable exceptions.
-        changes:
-          items:
-            $ref: '#/components/schemas/AffectedElementChangeDTO'
-          type: array
-          title: Changes
-          description: Machine-readable changes.
-        references:
-          items:
-            $ref: '#/components/schemas/AffectedElementReferenceDTO'
-          type: array
-          title: References
-          description: References to related objects.
+        type:
+          type: string
+          enum:
+          - ALTITUDE
+          - HEIGHT
+          title: Type
+        value:
+          type: integer
+          title: Value
+        unit:
+          type: string
+          title: Unit
       type: object
-      title: AffectedElementSemanticsDTO
+      required:
+      - type
+      - value
+      - unit
+      title: MeasurementComponentValueDTO
+    AffectedElementReferenceDTO:
+      properties:
+        relation:
+          type: string
+          title: Relation
+          description: Relation to the referenced object.
+        type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Type
+          description: Type of the referenced object when available.
+        identifier:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Identifier
+          description: Identifier of the referenced object when available.
+        role:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Role
+          description: Role of this referenced object inside an ordered route when available.
+        sequence:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sequence
+          description: One-based order of this referenced object inside an ordered route when available.
+      type: object
+      required:
+      - relation
+      title: AffectedElementReferenceDTO
     AffectedElementClauseDTO:
       properties:
         dimension:
@@ -3033,6 +2365,168 @@ components:
       - operator
       - value
       title: AffectedElementClauseDTO
+    CriticalOperationalRestrictionGroup:
+      properties:
+        location_code:
+          type: string
+          title: Location Code
+          description: ICAO code of the location this restriction group belongs to.
+        location_role:
+          anyOf:
+          - $ref: '#/components/schemas/LocationType'
+          - type: 'null'
+          description: Flight role of the location, used by the client to render labels such as Origin or Destination.
+        items:
+          items:
+            type: string
+          type: array
+          title: Items
+          description: Critical operational restriction items for this location. Items must not repeat the location label.
+      type: object
+      required:
+      - location_code
+      title: CriticalOperationalRestrictionGroup
+    NotamPrioritisationRequest:
+      properties:
+        locations:
+          items:
+            $ref: '#/components/schemas/LocationWithType'
+          type: array
+          maxItems: 30
+          minItems: 1
+          title: Locations
+          description: List of locations (airports/FIRs) with their types and time windows
+        origin_runway:
+          anyOf:
+          - type: string
+            maxLength: 7
+            minLength: 1
+          - type: 'null'
+          title: Origin Runway
+          description: The planned origin airport runway (e.g. 33)
+        destination_runway:
+          anyOf:
+          - type: string
+            maxLength: 7
+            minLength: 1
+          - type: 'null'
+          title: Destination Runway
+          description: The planned destination airport runway (e.g. 18R)
+        destination_procedure:
+          anyOf:
+          - type: string
+            maxLength: 15
+            minLength: 1
+          - type: 'null'
+          title: Destination Procedure
+          description: The planned destination airport landing procedure (e.g. ILS18R etc.)
+        aircraft_type:
+          anyOf:
+          - type: string
+            maxLength: 15
+            minLength: 1
+          - type: 'null'
+          title: Aircraft Type
+          description: The type of aircraft (e.g. A320, B737, etc.)
+        aircraft_details:
+          anyOf:
+          - $ref: '#/components/schemas/AircraftDetails'
+          - type: 'null'
+          description: The details of the aircraft
+        notam_id:
+          type: string
+          title: Notam Id
+          description: Identifier of the NOTAM to prioritise
+      type: object
+      required:
+      - locations
+      - notam_id
+      title: NotamPrioritisationRequest
+      description: Flight profile request extended with the NOTAM identifier to evaluate.
+    NotamMapElementDTO:
+      properties:
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Id
+          description: Unique identifier of the persisted map element.
+        element_type:
+          type: string
+          title: Element Type
+          description: Type of the map element (e.g., line, polygon, point).
+        coordinates:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Coordinates
+          description: Coordinates of the map element.
+        description:
+          type: string
+          title: Description
+          description: Description of the map element.
+        area_number:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Area Number
+          description: Optional area number identifier for the element.
+        geojson:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Geojson
+          description: GeoJSON representation of the map element.
+        bottom:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Bottom
+          description: Lower vertical limit with value, unit, reference, value_ft, and raw_string.
+        top:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Top
+          description: Upper vertical limit with value, unit, reference, value_ft, raw_string, and optional embedded height data.
+      type: object
+      required:
+      - element_type
+      - coordinates
+      - description
+      title: NotamMapElementDTO
+      description: Data Transfer Object for NOTAM map elements.
+    FractionalMeasurementValueDTO:
+      properties:
+        kind:
+          type: string
+          const: FRACTIONAL_MEASUREMENT
+          title: Kind
+          default: FRACTIONAL_MEASUREMENT
+        raw_string:
+          type: string
+          title: Raw String
+        numerator:
+          type: integer
+          title: Numerator
+        denominator:
+          type: integer
+          title: Denominator
+        unit:
+          type: string
+          title: Unit
+      type: object
+      required:
+      - raw_string
+      - numerator
+      - denominator
+      - unit
+      title: FractionalMeasurementValueDTO
     AffectedElementChangeDTO:
       properties:
         subject:
@@ -3073,6 +2567,512 @@ components:
       required:
       - subject
       title: AffectedElementChangeDTO
+    AircraftDetails:
+      properties:
+        equipment:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Equipment
+          description: List of equipment codes as per ICAO flight plan (e.g., 'S' for standard equipment).
+        surveillance:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Surveillance
+          description: List of surveillance equipment codes (e.g., 'SSR' for Secondary Surveillance Radar).
+        adsb:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Adsb
+          description: List of ADS-B equipment codes (e.g., 'B1' for ADS-B with dedicated 1090 MHz out capability).
+        adsc:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Adsc
+          description: List of ADS-C equipment codes (e.g., 'D1' for ADS-C with FANS 1/A capability).
+        faa_domestic:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Faa Domestic
+          description: FAA domestic equipment code (e.g., 'A' for RNAV capability).
+        fuel_type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Fuel Type
+          description: Type of fuel used by the aircraft (e.g., 'Jet A1').
+        persons_on_board:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Persons On Board
+          description: Number of persons on board the aircraft.
+        pbn_levels:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Pbn Levels
+          description: Performance Based Navigation levels (e.g., 'C2' for RNAV 2).
+        nav_augmentations:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Nav Augmentations
+          description: Navigation augmentations used (e.g., 'SBAS' for Satellite-Based Augmentation System).
+        other_information:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Other Information
+          description: Any other relevant information of the aircraft equipment and configuration.
+        cwt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cwt
+          description: Category Wake Turbulence (e.g., 'M' for Medium, 'H' for Heavy, 'J' for Super).
+        mtow_kg:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Mtow Kg
+          description: Maximum Takeoff Weight in kilograms.
+        mtow_lb:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Mtow Lb
+          description: Maximum Takeoff Weight in pounds.
+        num_engines:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Num Engines
+          description: Number of engines on the aircraft.
+        wingspan_m:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Wingspan M
+          description: Wingspan in meters (rounded to 1 decimal place).
+        wingspan_ft:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Wingspan Ft
+          description: Wingspan in feet (rounded to 1 decimal place).
+        physical_class_engine:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Physical Class Engine
+          description: Physical class of engine (e.g., 'Jet', 'Propeller', 'Piston').
+      type: object
+      title: AircraftDetails
+    ValueDTO:
+      properties:
+        kind:
+          type: string
+          const: VALUE
+          title: Kind
+          default: VALUE
+        raw_string:
+          type: string
+          title: Raw String
+        values:
+          items:
+            $ref: '#/components/schemas/ValueComponentDTO'
+          type: array
+          title: Values
+      type: object
+      required:
+      - raw_string
+      title: ValueDTO
+    NotamInterpretationDTO:
+      properties:
+        description:
+          type: string
+          title: Description
+          description: Detailed description of the NOTAM interpretation.
+        excerpt:
+          type: string
+          title: Excerpt
+          description: Brief excerpt summarizing the interpretation.
+        category:
+          type: string
+          title: Category
+          description: Interpretation category.
+        subcategory:
+          type: string
+          title: Subcategory
+          description: Interpretation subcategory.
+        map_elements:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/NotamMapElementDTO'
+            type: array
+          - type: 'null'
+          title: Map Elements
+          description: List of map elements extracted from the interpretation.
+        affected_elements:
+          items:
+            $ref: '#/components/schemas/AffectedElementDTO'
+          type: array
+          title: Affected Elements
+          description: List of affected elements described in the NOTAM.
+        schedules:
+          items:
+            $ref: '#/components/schemas/NotamScheduleInterpretationDTO'
+          type: array
+          title: Schedules
+          description: List of schedule interpretations for the NOTAM.
+        schedule_description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Schedule Description
+          description: Human-readable schedule description.
+      type: object
+      required:
+      - description
+      - excerpt
+      - category
+      - subcategory
+      title: NotamInterpretationDTO
+    NotamScheduleInterpretationDTO:
+      properties:
+        source:
+          type: string
+          title: Source
+          description: Source of the schedule interpretation.
+        description:
+          type: string
+          title: Description
+          description: Description of the schedule interpretation.
+        rrule:
+          type: string
+          title: Rrule
+          description: Recurrence rule for the schedule.
+        duration_hrs:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Duration Hrs
+          description: Duration of each recurrence of the schedule period in hours.
+        is_sunrise_sunset:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Is Sunrise Sunset
+          description: Indicates if the schedule is based on sunrise/sunset timings.
+      type: object
+      required:
+      - source
+      - description
+      - rrule
+      title: NotamScheduleInterpretationDTO
+    NotamPriority:
+      type: string
+      enum:
+      - NONE
+      - HIGH
+      - MEDIUM
+      - LOW
+      title: NotamPriority
+      description: Priority levels returned by the prioritisation model.
+    BriefingJobStatusDTO:
+      properties:
+        uuid:
+          type: string
+          title: Uuid
+          description: Unique identifier for the briefing job
+        status:
+          $ref: '#/components/schemas/BriefingStatus'
+          description: Current job status
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: When the job was created
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: When the job was last updated
+        response:
+          anyOf:
+          - $ref: '#/components/schemas/GenerateFlightBriefingResponse'
+          - type: 'null'
+          description: Generated briefing response if completed
+      type: object
+      required:
+      - uuid
+      - status
+      - created_at
+      - updated_at
+      title: BriefingJobStatusDTO
+      description: DTO returned by the status endpoint for a briefing job.
+    LocationType:
+      type: string
+      enum:
+      - origin
+      - destination
+      - alternate
+      - fir
+      title: LocationType
+      description: Types of locations in a flight plan.
+    BriefingStatus:
+      type: string
+      enum:
+      - pending
+      - processing
+      - completed
+      - failed
+      title: BriefingStatus
+      description: Status of a briefing job.
+    NotamDTO:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Unique identifier for the NOTAM.
+        notam_number:
+          type: string
+          title: Notam Number
+          description: NOTAM number or identifier.
+        location:
+          type: string
+          title: Location
+          description: Location where the NOTAM is applicable.
+        icao_code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Icao Code
+          description: ICAO code for the airport or facility.
+        classification:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Classification
+          description: 'Classification of the NOTAM: DOM, FDC, INTL, or MIL.'
+        starts_at:
+          type: string
+          format: date-time
+          title: Starts At
+          description: Start datetime of NOTAM validity.
+        ends_at:
+          type: string
+          format: date-time
+          title: Ends At
+          description: End datetime of NOTAM validity.
+        issued_at:
+          type: string
+          format: date-time
+          title: Issued At
+          description: Datetime when the NOTAM was issued.
+        is_estimated:
+          type: boolean
+          title: Is Estimated
+          description: Indicates if the NOTAM times are estimated (EST).
+        is_permanent:
+          type: boolean
+          title: Is Permanent
+          description: Indicates if the NOTAM is permanen (PERM)t.
+        message:
+          type: string
+          title: Message
+          description: Only the message of the NOTAM.
+        icao_message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Icao Message
+          description: Only the ICAO formatted message of the NOTAM.
+        qcode:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Qcode
+          description: Raw 5-letter Q-code extracted from the NOTAM message (e.g., QMRLC).
+        interpretation:
+          anyOf:
+          - $ref: '#/components/schemas/NotamInterpretationDTO'
+          - type: 'null'
+          description: Interpretation details of the NOTAM.
+      type: object
+      required:
+      - id
+      - notam_number
+      - location
+      - starts_at
+      - ends_at
+      - issued_at
+      - is_estimated
+      - is_permanent
+      - message
+      title: NotamDTO
+      description: "Data Transfer Object (DTO) for a NOTAM (Notice to Air Missions).\n\nAttributes:\n    notam_number (str): The unique identifier for the NOTAM\n    location (str): The facility designator/location identifier this NOTAM applies to\n    starts_at (datetime): When this NOTAM becomes active\n    ends_at (datetime): When this NOTAM expires\n    message (str): The human-readable traditional format message\n    icao_message (str): The ICAO format message\n    interpretation (Optional[NotamInterpretationDTO]): Optional interpretation of the NOTAM content"
+    GenerateFlightBriefingResponse:
+      properties:
+        locations:
+          items:
+            $ref: '#/components/schemas/LocationWithType'
+          type: array
+          title: Locations
+          description: The locations that are affected by the flight briefing
+        briefing:
+          $ref: '#/components/schemas/BriefingResponse'
+          description: The flight briefing
+      type: object
+      required:
+      - locations
+      - briefing
+      title: GenerateFlightBriefingResponse
+    NotamListResult:
+      properties:
+        notams:
+          items:
+            $ref: '#/components/schemas/NotamDTO'
+          type: array
+          title: Notams
+        total_count:
+          type: integer
+          title: Total Count
+        page:
+          type: integer
+          title: Page
+        per_page:
+          type: integer
+          title: Per Page
+      type: object
+      required:
+      - notams
+      - total_count
+      - page
+      - per_page
+      title: NotamListResult
+    AircraftDesignatorValueDTO:
+      properties:
+        kind:
+          type: string
+          enum:
+          - family
+          - variant
+          title: Kind
+        designator:
+          type: string
+          title: Designator
+        source:
+          type: string
+          title: Source
+      type: object
+      required:
+      - kind
+      - designator
+      - source
+      title: AircraftDesignatorValueDTO
+    RecentlyExpiredNotamListResult:
+      properties:
+        notams:
+          items:
+            $ref: '#/components/schemas/RecentlyExpiredNotamDTO'
+          type: array
+          title: Notams
+        total_count:
+          type: integer
+          title: Total Count
+        page:
+          type: integer
+          title: Page
+        per_page:
+          type: integer
+          title: Per Page
+      type: object
+      required:
+      - notams
+      - total_count
+      - page
+      - per_page
+      title: RecentlyExpiredNotamListResult
+    BriefingResponse:
+      properties:
+        critical_operational_restrictions:
+          items:
+            $ref: '#/components/schemas/CriticalOperationalRestrictionGroup'
+          type: array
+          title: Critical Operational Restrictions
+          description: Critical operational restrictions grouped by flight location so the client can render one heading per location.
+        text:
+          type: string
+          title: Text
+          description: The flight briefing text
+      type: object
+      required:
+      - text
+      title: BriefingResponse
+    ValueComponentDTO:
+      properties:
+        type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Type
+        value:
+          anyOf:
+          - type: integer
+          - type: string
+          title: Value
+        unit:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Unit
+      type: object
+      required:
+      - value
+      title: ValueComponentDTO
+    AffectedElementSemanticsDTO:
+      properties:
+        conditions:
+          items:
+            $ref: '#/components/schemas/AffectedElementClauseDTO'
+          type: array
+          title: Conditions
+          description: Machine-readable conditions, including stand or gate subsets when explicitly stated.
+        exceptions:
+          items:
+            $ref: '#/components/schemas/AffectedElementClauseDTO'
+          type: array
+          title: Exceptions
+          description: Machine-readable exceptions.
+        changes:
+          items:
+            $ref: '#/components/schemas/AffectedElementChangeDTO'
+          type: array
+          title: Changes
+          description: Machine-readable changes.
+        references:
+          items:
+            $ref: '#/components/schemas/AffectedElementReferenceDTO'
+          type: array
+          title: References
+          description: References to related objects.
+      type: object
+      title: AffectedElementSemanticsDTO
   securitySchemes:
     bearerAuth:
       type: http
